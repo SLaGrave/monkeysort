@@ -67,24 +67,13 @@ rotation = -3.1415927
 scale = Vector2(37.384018, -28.543884)
 polygon = PackedVector2Array(1.3240957, 0.35033894, 0.81585693, -0.3853712, -1.6718369, -0.42040443, -1.1368494, 0.42040634)
 
-[node name="ArmController" type="CharacterBody2D" parent="."]
+[node name="ArmPivot" type="Node2D" parent="."]
 script = ExtResource("2_0rdsr")
 
-[node name="ColorRect" type="ColorRect" parent="ArmController"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.28734443, 0.124652825, 0.006357928, 1)
+[node name="HandArea" type="Area2D" parent="ArmPivot"]
+unique_name_in_owner = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ArmController"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ArmPivot/HandArea"]
 shape = SubResource("RectangleShape2D_p73vr")
 
 [node name="RipeBanana" parent="." instance=ExtResource("3_ipu61")]
