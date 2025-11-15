@@ -1,13 +1,15 @@
 [gd_scene load_steps=5 format=3 uid="uid://bg6va57dqqfms"]
 
-[ext_resource type="Script" uid="uid://dhr1xnd3176t0" path="res://arm_controller.gd" id="1_hat22"]
-[ext_resource type="Texture2D" uid="uid://di501dbahn6a2" path="res://assets/box.png" id="1_p73vr"]
-[ext_resource type="PackedScene" path="res://scenes/rotten_banana.tscn" id="3_p73vr"]
+[ext_resource type="Texture2D" uid="uid://di501dbahn6a2" path="res://assets/box.png" id="1_d2op2"]
+[ext_resource type="Script" uid="uid://dhr1xnd3176t0" path="res://arm_controller.gd" id="2_0rdsr"]
+[ext_resource type="PackedScene" uid="uid://duo56lu5y52a4" path="res://scenes/rotten_banana.tscn" id="3_ipu61"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p73vr"]
 size = Vector2(40, 40)
 
 [node name="MainGame" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Conveyor" type="Node2D" parent="."]
 position = Vector2(628, 0)
@@ -16,19 +18,20 @@ position = Vector2(628, 0)
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -100.0
-offset_right = 100.0
-offset_bottom = 500.0
+offset_left = -728.0
+offset_top = -626.0
+offset_right = -528.0
+offset_bottom = -126.0
 grow_horizontal = 2
 color = Color(0.51155454, 0.53019845, 0.5256527, 1)
 
 [node name="RipeBox" type="CharacterBody2D" parent="."]
-position = Vector2(859, 500)
+position = Vector2(237, -163)
 
 [node name="Sprite2D" type="Sprite2D" parent="RipeBox"]
 modulate = Color(0.6715544, 0.6942426, 3.85046e-07, 1)
 scale = Vector2(0.16000122, 0.16000122)
-texture = ExtResource("1_p73vr")
+texture = ExtResource("1_d2op2")
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="RipeBox"]
 position = Vector2(-18.5, -38.00003)
@@ -37,12 +40,12 @@ scale = Vector2(37.384018, -28.543884)
 polygon = PackedVector2Array(1.377594, 0.42040634, 0.8426075, -0.3853693, -1.6985855, -0.42040348, -1.1368484, 0.3503399)
 
 [node name="RottenBox" type="CharacterBody2D" parent="."]
-position = Vector2(418, 500)
+position = Vector2(-204, -163)
 
 [node name="Sprite2D" type="Sprite2D" parent="RottenBox"]
 modulate = Color(1, 0.4776129, 0.41281223, 1)
 scale = Vector2(0.16000122, 0.16000122)
-texture = ExtResource("1_p73vr")
+texture = ExtResource("1_d2op2")
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="RottenBox"]
 position = Vector2(-18.5, -38.00003)
@@ -51,12 +54,12 @@ scale = Vector2(37.384018, -28.543884)
 polygon = PackedVector2Array(1.377594, 0.38537216, 0.84260654, -0.4204054, -1.6718369, -0.4904728, -1.1368494, 0.38537216)
 
 [node name="UnripeBox" type="CharacterBody2D" parent="."]
-position = Vector2(418, 379)
+position = Vector2(-204, -284)
 
 [node name="Sprite2D" type="Sprite2D" parent="UnripeBox"]
 modulate = Color(4.0911136e-06, 0.7956194, 0.2148616, 1)
 scale = Vector2(0.16000122, 0.16000122)
-texture = ExtResource("1_p73vr")
+texture = ExtResource("1_d2op2")
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="UnripeBox"]
 position = Vector2(-18.5, -38.00003)
@@ -65,7 +68,7 @@ scale = Vector2(37.384018, -28.543884)
 polygon = PackedVector2Array(1.3240957, 0.35033894, 0.81585693, -0.3853712, -1.6718369, -0.42040443, -1.1368494, 0.42040634)
 
 [node name="ArmController" type="CharacterBody2D" parent="."]
-script = ExtResource("1_hat22")
+script = ExtResource("2_0rdsr")
 
 [node name="ColorRect" type="ColorRect" parent="ArmController"]
 anchors_preset = 8
@@ -84,5 +87,5 @@ color = Color(0.28734443, 0.124652825, 0.006357928, 1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ArmController"]
 shape = SubResource("RectangleShape2D_p73vr")
 
-[node name="RipeBanana" parent="." instance=ExtResource("3_p73vr")]
-position = Vector2(628, 412)
+[node name="RipeBanana" parent="." instance=ExtResource("3_ipu61")]
+position = Vector2(-16, -676)
