@@ -1,0 +1,23 @@
+# Godot-specific generated files and folders
+.godot/
+.import/
+export_presets.cfg
+*.pck
+*.zip
+*.rar
+*.exe
+*.apk
+*.ipa
+*.app
+*.wasm
+*.html
+build/
+bin/
+
+# OS/Editor specific files
+.DS_Store
+Thumbs.db
+desktop.ini
+*.sublime-workspace
+*.vscode/
+.idea/
