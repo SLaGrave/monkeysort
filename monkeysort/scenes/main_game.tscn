@@ -21,12 +21,12 @@ anchor_right = 0.5
 offset_left = -728.0
 offset_top = -626.0
 offset_right = -528.0
-offset_bottom = -126.0
+offset_bottom = 224.0
 grow_horizontal = 2
 color = Color(0.51155454, 0.53019845, 0.5256527, 1)
 
 [node name="RipeBox" type="CharacterBody2D" parent="."]
-position = Vector2(237, -163)
+position = Vector2(284, 314)
 
 [node name="Sprite2D" type="Sprite2D" parent="RipeBox"]
 modulate = Color(0.6715544, 0.6942426, 3.85046e-07, 1)
@@ -40,7 +40,7 @@ scale = Vector2(37.384018, -28.543884)
 polygon = PackedVector2Array(1.377594, 0.42040634, 0.8426075, -0.3853693, -1.6985855, -0.42040348, -1.1368484, 0.3503399)
 
 [node name="RottenBox" type="CharacterBody2D" parent="."]
-position = Vector2(-204, -163)
+position = Vector2(-237, 301)
 
 [node name="Sprite2D" type="Sprite2D" parent="RottenBox"]
 modulate = Color(1, 0.4776129, 0.41281223, 1)
@@ -54,7 +54,7 @@ scale = Vector2(37.384018, -28.543884)
 polygon = PackedVector2Array(1.377594, 0.38537216, 0.84260654, -0.4204054, -1.6718369, -0.4904728, -1.1368494, 0.38537216)
 
 [node name="UnripeBox" type="CharacterBody2D" parent="."]
-position = Vector2(-204, -284)
+position = Vector2(-444, 304)
 
 [node name="Sprite2D" type="Sprite2D" parent="UnripeBox"]
 modulate = Color(4.0911136e-06, 0.7956194, 0.2148616, 1)
@@ -68,7 +68,9 @@ scale = Vector2(37.384018, -28.543884)
 polygon = PackedVector2Array(1.3240957, 0.35033894, 0.81585693, -0.3853712, -1.6718369, -0.42040443, -1.1368494, 0.42040634)
 
 [node name="ArmPivot" type="Node2D" parent="."]
+position = Vector2(2, 398)
 script = ExtResource("2_0rdsr")
+color = Color(0.26863337, 4.4520945e-07, 2.0455569e-07, 1)
 
 [node name="HandArea" type="Area2D" parent="ArmPivot"]
 unique_name_in_owner = true
@@ -78,3 +80,5 @@ shape = SubResource("RectangleShape2D_p73vr")
 
 [node name="RipeBanana" parent="." instance=ExtResource("3_ipu61")]
 position = Vector2(-16, -676)
+
+[connection signal="body_entered" from="ArmPivot/HandArea" to="ArmPivot" method="_on_hand_area_body_entered"]
