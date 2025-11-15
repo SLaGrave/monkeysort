@@ -8,7 +8,12 @@ func _physics_process(delta):
 	%HandArea.global_position = get_global_mouse_position()
 	
 	if grabbed_item != null:
+		if Input.is_action_just_released("grab"):
+			grabbed_item = null
+			return
+
 		grabbed_item.global_position = %HandArea.global_position
+		
 	
 	queue_redraw()
 

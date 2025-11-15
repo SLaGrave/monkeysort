@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bg6va57dqqfms"]
+[gd_scene load_steps=7 format=3 uid="uid://bg6va57dqqfms"]
 
 [ext_resource type="PackedScene" uid="uid://dqob51ts1wg6" path="res://assets/background.kra" id="1_0rdsr"]
 [ext_resource type="Texture2D" uid="uid://di501dbahn6a2" path="res://assets/box.png" id="1_d2op2"]
@@ -8,6 +8,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p73vr"]
 size = Vector2(40, 40)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0rdsr"]
+size = Vector2(2413, 127)
+
 [node name="MainGame" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -15,24 +18,24 @@ size = Vector2(40, 40)
 [node name="background" parent="." instance=ExtResource("1_0rdsr")]
 position = Vector2(-960, -540)
 
-[node name="RipeBox" type="CharacterBody2D" parent="."]
+[node name="RipeBox" type="StaticBody2D" parent="."]
 position = Vector2(299, 383)
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="RipeBox"]
 modulate = Color(0.6715544, 0.6942426, 3.85046e-07, 1)
-rotation = -0.034906585
+rotation = -0.03490658
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("1_d2op2")
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="RipeBox"]
 position = Vector2(25, -71)
-rotation = -3.1415927
+rotation = 3.1415925
 scale = Vector2(37.384018, -28.543884)
 polygon = PackedVector2Array(1.8992076, 0.7357092, 3.0226817, -0.6656418, -1.6852121, -0.8057766, -2.755188, 0.5605402)
 
-[node name="RottenBox" type="CharacterBody2D" parent="."]
+[node name="RottenBox" type="StaticBody2D" parent="."]
 position = Vector2(-329, 372)
 metadata/_edit_group_ = true
 
@@ -43,11 +46,11 @@ texture = ExtResource("1_d2op2")
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="RottenBox"]
 position = Vector2(-18.5, -38.00003)
-rotation = -3.1415927
+rotation = 3.1415925
 scale = Vector2(37.384018, -28.543884)
 polygon = PackedVector2Array(2.9825583, -0.42040443, 1.9660807, -1.8567896, -2.7418137, -1.926857, -1.6985865, -0.4554386)
 
-[node name="UnripeBox" type="CharacterBody2D" parent="."]
+[node name="UnripeBox" type="StaticBody2D" parent="."]
 position = Vector2(-678, 376)
 metadata/_edit_group_ = true
 
@@ -58,7 +61,7 @@ texture = ExtResource("1_d2op2")
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="UnripeBox"]
 position = Vector2(-18.5, -38.00003)
-rotation = -3.1415927
+rotation = 3.1415925
 scale = Vector2(37.384018, -28.543884)
 polygon = PackedVector2Array(2.9558086, -0.4554386, 1.9660797, -1.8567886, -2.7685623, -1.926856, -1.6985874, -0.49047184)
 
@@ -77,6 +80,14 @@ shape = SubResource("RectangleShape2D_p73vr")
 
 [node name="RipeBanana" parent="." instance=ExtResource("3_ipu61")]
 position = Vector2(1082, -67)
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2(-12, 474)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+shape = SubResource("RectangleShape2D_0rdsr")
+debug_color = Color(0.8371058, 0.38709053, 0, 0.41960785)
 
 [connection signal="body_entered" from="ArmPivot/HandArea" to="ArmPivot" method="_on_hand_area_body_entered"]
 
