@@ -23,6 +23,10 @@ window/size/mode=3
 window/stretch/mode="viewport"
 window/stretch/aspect="keep_width"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot-krita-importer/plugin.cfg")
+
 [input]
 
 grab={

@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://bg6va57dqqfms"]
+[gd_scene load_steps=6 format=3 uid="uid://bg6va57dqqfms"]
 
+[ext_resource type="PackedScene" uid="uid://dqob51ts1wg6" path="res://assets/background.kra" id="1_0rdsr"]
 [ext_resource type="Texture2D" uid="uid://di501dbahn6a2" path="res://assets/box.png" id="1_d2op2"]
 [ext_resource type="Script" uid="uid://dhr1xnd3176t0" path="res://arm_controller.gd" id="2_0rdsr"]
 [ext_resource type="PackedScene" uid="uid://duo56lu5y52a4" path="res://scenes/rotten_banana.tscn" id="3_ipu61"]
@@ -11,74 +12,72 @@ size = Vector2(40, 40)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="Conveyor" type="Node2D" parent="."]
-position = Vector2(628, 0)
-
-[node name="ColorRect" type="ColorRect" parent="Conveyor"]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -728.0
-offset_top = -626.0
-offset_right = -528.0
-offset_bottom = 224.0
-grow_horizontal = 2
-color = Color(0.51155454, 0.53019845, 0.5256527, 1)
+[node name="background" parent="." instance=ExtResource("1_0rdsr")]
+position = Vector2(-960, -540)
 
 [node name="RipeBox" type="CharacterBody2D" parent="."]
-position = Vector2(284, 314)
+position = Vector2(299, 383)
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="RipeBox"]
 modulate = Color(0.6715544, 0.6942426, 3.85046e-07, 1)
-scale = Vector2(0.16000122, 0.16000122)
+rotation = -0.034906585
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("1_d2op2")
+flip_h = true
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="RipeBox"]
-position = Vector2(-18.5, -38.00003)
+position = Vector2(25, -71)
 rotation = -3.1415927
 scale = Vector2(37.384018, -28.543884)
-polygon = PackedVector2Array(1.377594, 0.42040634, 0.8426075, -0.3853693, -1.6985855, -0.42040348, -1.1368484, 0.3503399)
+polygon = PackedVector2Array(1.8992076, 0.7357092, 3.0226817, -0.6656418, -1.6852121, -0.8057766, -2.755188, 0.5605402)
 
 [node name="RottenBox" type="CharacterBody2D" parent="."]
-position = Vector2(-237, 301)
+position = Vector2(-329, 372)
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="RottenBox"]
 modulate = Color(1, 0.4776129, 0.41281223, 1)
-scale = Vector2(0.16000122, 0.16000122)
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("1_d2op2")
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="RottenBox"]
 position = Vector2(-18.5, -38.00003)
 rotation = -3.1415927
 scale = Vector2(37.384018, -28.543884)
-polygon = PackedVector2Array(1.377594, 0.38537216, 0.84260654, -0.4204054, -1.6718369, -0.4904728, -1.1368494, 0.38537216)
+polygon = PackedVector2Array(2.9825583, -0.42040443, 1.9660807, -1.8567896, -2.7418137, -1.926857, -1.6985865, -0.4554386)
 
 [node name="UnripeBox" type="CharacterBody2D" parent="."]
-position = Vector2(-444, 304)
+position = Vector2(-678, 376)
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="UnripeBox"]
 modulate = Color(4.0911136e-06, 0.7956194, 0.2148616, 1)
-scale = Vector2(0.16000122, 0.16000122)
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("1_d2op2")
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="UnripeBox"]
 position = Vector2(-18.5, -38.00003)
 rotation = -3.1415927
 scale = Vector2(37.384018, -28.543884)
-polygon = PackedVector2Array(1.3240957, 0.35033894, 0.81585693, -0.3853712, -1.6718369, -0.42040443, -1.1368494, 0.42040634)
+polygon = PackedVector2Array(2.9558086, -0.4554386, 1.9660797, -1.8567886, -2.7685623, -1.926856, -1.6985874, -0.49047184)
 
 [node name="ArmPivot" type="Node2D" parent="."]
-position = Vector2(2, 398)
+position = Vector2(-3, 563)
 script = ExtResource("2_0rdsr")
 color = Color(0.26863337, 4.4520945e-07, 2.0455569e-07, 1)
+metadata/_edit_group_ = true
 
 [node name="HandArea" type="Area2D" parent="ArmPivot"]
 unique_name_in_owner = true
+position = Vector2(1, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ArmPivot/HandArea"]
 shape = SubResource("RectangleShape2D_p73vr")
 
 [node name="RipeBanana" parent="." instance=ExtResource("3_ipu61")]
-position = Vector2(-16, -676)
+position = Vector2(1082, -67)
 
 [connection signal="body_entered" from="ArmPivot/HandArea" to="ArmPivot" method="_on_hand_area_body_entered"]
+
+[editable path="background"]
