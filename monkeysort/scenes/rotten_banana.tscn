@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://duo56lu5y52a4"]
+
+[ext_resource type="Texture2D" uid="uid://0vw1u3ug5vq1" path="res://assets/bananas.png" id="1_ibbku"]
+
+[node name="RipeBanana" type="RigidBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("1_ibbku")
+region_enabled = true
+region_rect = Rect2(1263.8901, 198.92206, 480.17505, 449.84808)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-32, 22, -23, 18, -12, 13, 0, 8, 11, -1, 17, -11, 23, -22, 27, -26, 29, -24, 29, -16, 28, -9, 26, -1, 20, 8, 14, 13, 6, 18, -4, 22, -16, 26, -28, 26)
