@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://0vw1u3ug5vq1" path="res://assets/bananas.png" id="1_lxj63"]
 
-[node name="RipeBanana" type="RigidBody2D"]
+[node name="RipeBanana" type="CharacterBody2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.15, 0.15)

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://c0mtu65dvq2od" path="res://banan.gd" id="1_fa26h"]
 [ext_resource type="Texture2D" uid="uid://0vw1u3ug5vq1" path="res://assets/bananas.png" id="1_ibbku"]
 
-[node name="RottenBanana" type="RigidBody2D"]
+[node name="RottenBanana" type="CharacterBody2D"]
 script = ExtResource("1_fa26h")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
