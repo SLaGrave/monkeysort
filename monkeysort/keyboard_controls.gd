@@ -2,5 +2,5 @@ extends Node
 
 
 func _input(event):
-	if event.is_action_pressed("ms_close"):
+	if event.is_action_pressed("close"):
 		get_tree().quit()
