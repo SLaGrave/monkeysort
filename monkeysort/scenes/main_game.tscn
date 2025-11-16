@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bg6va57dqqfms"]
+[gd_scene load_steps=11 format=3 uid="uid://bg6va57dqqfms"]
 
 [ext_resource type="PackedScene" uid="uid://dqob51ts1wg6" path="res://assets/background.kra" id="1_0rdsr"]
 [ext_resource type="Texture2D" uid="uid://di501dbahn6a2" path="res://assets/box.png" id="1_d2op2"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://duo56lu5y52a4" path="res://scenes/rotten_banana.tscn" id="3_ipu61"]
 [ext_resource type="Script" uid="uid://co2arg6dtin3x" path="res://scripts/box.gd" id="3_wi4c7"]
 [ext_resource type="PackedScene" uid="uid://doy6a4jif0gi0" path="res://scenes/ripe_banana.tscn" id="5_ygxny"]
+[ext_resource type="Script" uid="uid://d3xtdp1s4k86d" path="res://scripts/scores.gd" id="8_70vka"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p73vr"]
 size = Vector2(40, 40)
@@ -105,6 +106,15 @@ on_conveyor = true
 
 [node name="RottenBanana" parent="." instance=ExtResource("3_ipu61")]
 position = Vector2(1487, -39)
+
+[node name="Scores" type="Label" parent="."]
+modulate = Color(0, 0, 0, 1)
+offset_left = -905.0
+offset_top = -501.0
+offset_right = -787.0
+offset_bottom = -478.0
+text = "HOJASDLJNASD"
+script = ExtResource("8_70vka")
 
 [connection signal="body_entered" from="ArmPivot/HandArea" to="ArmPivot" method="_on_hand_area_body_entered"]
 

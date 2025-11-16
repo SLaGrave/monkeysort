@@ -7,12 +7,12 @@ enum BananaType { RIPE, UNRIPE, ROTTEN }
 @export var on_conveyor: bool = true
 
 # Initial (on conveyor) settings
-var speed := GlobalSettings.conveyor_speed
+var speed := Globals.conveyor_speed
 var direction := Vector2.LEFT
 
 func _physics_process(delta: float) -> void:
 	if not on_conveyor:
-		speed += delta * GlobalSettings.gravity
+		speed += delta * Globals.gravity
 		direction = Vector2.DOWN
 	var collision_info = move_and_collide(delta * speed * direction)
 	if collision_info:
@@ -22,5 +22,5 @@ func _physics_process(delta: float) -> void:
 
 func hit_a_box(box: MS_Box):
 	if box.accepts == banana_type:
-		GlobalSettings.increase_score(banana_type)
+		Globals.increase_score(banana_type)
 		queue_free()
