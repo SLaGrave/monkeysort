@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://bg6va57dqqfms"]
+[gd_scene load_steps=10 format=3 uid="uid://bg6va57dqqfms"]
 
 [ext_resource type="PackedScene" uid="uid://dqob51ts1wg6" path="res://assets/background.kra" id="1_0rdsr"]
 [ext_resource type="Texture2D" uid="uid://di501dbahn6a2" path="res://assets/box.png" id="1_d2op2"]
-[ext_resource type="Script" uid="uid://cdtknbauvb3tr" path="res://keyboard_controls.gd" id="1_ipu61"]
-[ext_resource type="Script" uid="uid://dhr1xnd3176t0" path="res://arm_controller.gd" id="2_0rdsr"]
+[ext_resource type="Script" uid="uid://cdtknbauvb3tr" path="res://scripts/keyboard_controls.gd" id="1_ipu61"]
+[ext_resource type="Script" uid="uid://dhr1xnd3176t0" path="res://scripts/arm_controller.gd" id="2_0rdsr"]
 [ext_resource type="PackedScene" uid="uid://duo56lu5y52a4" path="res://scenes/rotten_banana.tscn" id="3_ipu61"]
+[ext_resource type="Script" uid="uid://co2arg6dtin3x" path="res://scripts/box.gd" id="3_wi4c7"]
+[ext_resource type="PackedScene" uid="uid://doy6a4jif0gi0" path="res://scenes/ripe_banana.tscn" id="5_ygxny"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p73vr"]
 size = Vector2(40, 40)
@@ -24,6 +26,8 @@ position = Vector2(-960, -540)
 
 [node name="RipeBox" type="StaticBody2D" parent="."]
 position = Vector2(299, 383)
+script = ExtResource("3_wi4c7")
+accepts = null
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="RipeBox"]
@@ -41,6 +45,8 @@ polygon = PackedVector2Array(1.8992076, 0.7357092, 3.0226817, -0.6656418, -1.685
 
 [node name="RottenBox" type="StaticBody2D" parent="."]
 position = Vector2(-329, 372)
+script = ExtResource("3_wi4c7")
+accepts = 2
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="RottenBox"]
@@ -56,6 +62,8 @@ polygon = PackedVector2Array(2.9825583, -0.42040443, 1.9660807, -1.8567896, -2.7
 
 [node name="UnripeBox" type="StaticBody2D" parent="."]
 position = Vector2(-678, 376)
+script = ExtResource("3_wi4c7")
+accepts = 1
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="UnripeBox"]
@@ -82,9 +90,6 @@ position = Vector2(1, 0)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ArmPivot/HandArea"]
 shape = SubResource("RectangleShape2D_p73vr")
 
-[node name="RipeBanana" parent="." instance=ExtResource("3_ipu61")]
-position = Vector2(1082, -67)
-
 [node name="Floor" type="StaticBody2D" parent="."]
 position = Vector2(-12, 474)
 metadata/_edit_group_ = true
@@ -92,6 +97,14 @@ metadata/_edit_group_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
 shape = SubResource("RectangleShape2D_0rdsr")
 debug_color = Color(0.8371058, 0.38709053, 0, 0.41960785)
+
+[node name="RipeBanana" parent="." instance=ExtResource("5_ygxny")]
+position = Vector2(1009, -105)
+banana_type = 0
+on_conveyor = true
+
+[node name="RottenBanana" parent="." instance=ExtResource("3_ipu61")]
+position = Vector2(1487, -39)
 
 [connection signal="body_entered" from="ArmPivot/HandArea" to="ArmPivot" method="_on_hand_area_body_entered"]
 
