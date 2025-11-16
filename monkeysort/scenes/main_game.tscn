@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bg6va57dqqfms"]
+[gd_scene load_steps=8 format=3 uid="uid://bg6va57dqqfms"]
 
 [ext_resource type="PackedScene" uid="uid://dqob51ts1wg6" path="res://assets/background.kra" id="1_0rdsr"]
 [ext_resource type="Texture2D" uid="uid://di501dbahn6a2" path="res://assets/box.png" id="1_d2op2"]
+[ext_resource type="Script" uid="uid://cdtknbauvb3tr" path="res://keyboard_controls.gd" id="1_ipu61"]
 [ext_resource type="Script" uid="uid://dhr1xnd3176t0" path="res://arm_controller.gd" id="2_0rdsr"]
 [ext_resource type="PackedScene" uid="uid://duo56lu5y52a4" path="res://scenes/rotten_banana.tscn" id="3_ipu61"]
 
@@ -12,6 +13,9 @@ size = Vector2(40, 40)
 size = Vector2(2413, 127)
 
 [node name="MainGame" type="Node2D"]
+
+[node name="KeyboardControls" type="Node" parent="."]
+script = ExtResource("1_ipu61")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
