@@ -7,10 +7,10 @@ func _physics_process(_delta) -> void:
 	%HandArea.global_position = get_global_mouse_position()
 	if grabbed_item != null:
 		if Input.is_action_just_released("grab"):
-			grabbed_item.state = Banan.StateMachine.FALLING
+			grabbed_item.change_state(Banan.StateMachine.FALLING)
 			grabbed_item = null
 			return
-		grabbed_item.global_position = %HandArea.global_position
+		#grabbed_item.global_position = %HandArea.global_position
 	queue_redraw()
 
 
@@ -24,4 +24,4 @@ func _input(event: InputEvent) -> void:
 		if not bodies.is_empty():
 			if bodies[0] is Banan:
 				grabbed_item = bodies[0]
-				grabbed_item.state = Banan.StateMachine.GRABBED
+				grabbed_item.change_state(Banan.StateMachine.GRABBED)

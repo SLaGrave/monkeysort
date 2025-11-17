@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bg6va57dqqfms"]
+[gd_scene load_steps=14 format=3 uid="uid://bg6va57dqqfms"]
 
 [ext_resource type="PackedScene" uid="uid://dqob51ts1wg6" path="res://assets/background.kra" id="1_0rdsr"]
 [ext_resource type="Texture2D" uid="uid://di501dbahn6a2" path="res://assets/box.png" id="1_d2op2"]
@@ -6,7 +6,9 @@
 [ext_resource type="Script" uid="uid://dhr1xnd3176t0" path="res://scripts/arm_controller.gd" id="2_0rdsr"]
 [ext_resource type="PackedScene" uid="uid://duo56lu5y52a4" path="res://scenes/rotten_banana.tscn" id="3_ipu61"]
 [ext_resource type="Script" uid="uid://co2arg6dtin3x" path="res://scripts/box.gd" id="3_wi4c7"]
+[ext_resource type="Script" uid="uid://ccrrnfngnjr8h" path="res://scripts/conveyor_area.gd" id="5_nqdth"]
 [ext_resource type="PackedScene" uid="uid://doy6a4jif0gi0" path="res://scenes/ripe_banana.tscn" id="5_ygxny"]
+[ext_resource type="Script" uid="uid://dm6n4npbv1wi8" path="res://scenes/edge_area.gd" id="6_5cypo"]
 [ext_resource type="Script" uid="uid://cmicso3jmfgdl" path="res://scripts/nanner_spawner.gd" id="6_wi4c7"]
 [ext_resource type="Script" uid="uid://d3xtdp1s4k86d" path="res://scripts/scores.gd" id="8_70vka"]
 
@@ -32,7 +34,6 @@ z_index = 11
 [node name="RipeBox" type="StaticBody2D" parent="."]
 position = Vector2(299, 383)
 script = ExtResource("3_wi4c7")
-accepts = null
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="RipeBox"]
@@ -81,6 +82,18 @@ position = Vector2(-18.5, -38.00003)
 rotation = 3.1415925
 scale = Vector2(37.384018, -28.543884)
 polygon = PackedVector2Array(2.9558086, -0.4554386, 1.9660797, -1.8567886, -2.7685623, -1.926856, -1.6985874, -0.49047184)
+
+[node name="ConveyorArea" type="Area2D" parent="."]
+script = ExtResource("5_nqdth")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ConveyorArea"]
+polygon = PackedVector2Array(-340, -127, 1279, -116, 1277, 13, -492, 11)
+
+[node name="EdgeArea" type="Area2D" parent="."]
+script = ExtResource("6_5cypo")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="EdgeArea"]
+polygon = PackedVector2Array(-367, -127, -342, -128, -496, 12, -539, 11)
 
 [node name="ArmPivot" type="Node2D" parent="."]
 position = Vector2(-3, 563)
@@ -140,6 +153,9 @@ offset_bottom = -478.0
 text = "HOJASDLJNASD"
 script = ExtResource("8_70vka")
 
+[connection signal="body_entered" from="ConveyorArea" to="ConveyorArea" method="_on_body_entered"]
+[connection signal="body_entered" from="EdgeArea" to="EdgeArea" method="_on_body_entered"]
+[connection signal="body_exited" from="EdgeArea" to="EdgeArea" method="_on_body_exited"]
 [connection signal="body_entered" from="ArmPivot/HandArea" to="ArmPivot" method="_on_hand_area_body_entered"]
 
 [editable path="background"]

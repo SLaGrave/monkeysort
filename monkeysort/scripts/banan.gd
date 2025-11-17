@@ -1,7 +1,7 @@
 class_name Banan extends RigidBody2D
 
 enum BananaType { RIPE, UNRIPE, ROTTEN }
-enum StateMachine { ON_CONVEYOR, GRABBED, FALLING }
+enum StateMachine { ON_CONVEYOR, ON_CONVEYOR_EDGE, GRABBED, FALLING }
 
 @export var banana_type: BananaType
 
@@ -11,29 +11,63 @@ var state := StateMachine.ON_CONVEYOR
 var speed := Globals.conveyor_speed
 var direction := Vector2.LEFT
 
+
+func _ready() -> void:
+	change_state(state)
+
+func _process(delta: float) -> void:
+	mouse_position = get_global_mouse_position()
+	mouse_direction = mouse_position - old_mouse_position
+	old_mouse_position = mouse_position
+
 func _physics_process(delta: float) -> void:
 	match state:
 		StateMachine.ON_CONVEYOR:
-			freeze = false
-			gravity_scale = 0.0
-			speed = 100.0
-			direction = Vector2.LEFT
+			linear_velocity = speed * direction
 		StateMachine.GRABBED:
+			apply_central_force(500.0 * (mouse_position - global_position))
+			#global_position = mouse_position
+	#var collision_info = move_and_collide(delta * speed * direction)
+	#if collision_info:
+		#var collider = collision_info.get_collider()
+		#if collider is MS_Box:
+			#hit_a_box(collider)
+
+
+var mouse_direction: Vector2 = Vector2()
+var old_mouse_position: Vector2 = Vector2()
+var mouse_position: Vector2 = Vector2()
+
+func change_state(new_state: StateMachine):
+	
+	# On exiting old state
+	#match state:
+		#StateMachine.GRABBED:
+			#apply_central_impulse(mouse_direction * 1000.0)
+	
+	state = new_state
+	# On entering new state
+	match state:
+		StateMachine.ON_CONVEYOR:
+			gravity_scale = 0.0
+			speed = Globals.conveyor_speed
+			direction = Vector2.LEFT
+			linear_damp = 0.0
+		StateMachine.ON_CONVEYOR_EDGE:
+			gravity_scale = 0.0
+			speed = 0.0
+			linear_damp = 20.0
+		StateMachine.GRABBED:
+			gravity_scale = 0.0
 			collision_layer = 0
 			collision_mask = 0
-			freeze = true
+			linear_velocity = Vector2(0.0, 0.0)
+			linear_damp = 30.0
 		StateMachine.FALLING:
 			gravity_scale = 1.0
 			collision_layer = 1
 			collision_mask = 1
-			freeze = false
-			direction = Vector2.DOWN
-		
-	var collision_info = move_and_collide(delta * speed * direction)
-	if collision_info:
-		var collider = collision_info.get_collider()
-		if collider is MS_Box:
-			hit_a_box(collider)
+			linear_damp = 0.0
 
 func hit_a_box(box: MS_Box):
 	if box.accepts == banana_type:
