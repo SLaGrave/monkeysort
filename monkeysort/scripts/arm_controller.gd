@@ -7,6 +7,7 @@ func _physics_process(_delta) -> void:
 	%HandArea.global_position = get_global_mouse_position()
 	if grabbed_item != null:
 		if Input.is_action_just_released("grab"):
+			grabbed_item.state = Banan.StateMachine.FALLING
 			grabbed_item = null
 			return
 		grabbed_item.global_position = %HandArea.global_position
@@ -23,11 +24,4 @@ func _input(event: InputEvent) -> void:
 		if not bodies.is_empty():
 			if bodies[0] is Banan:
 				grabbed_item = bodies[0]
-				bodies[0].on_conveyor = false
-
-
-func _on_hand_area_body_entered(_param) -> void:
-	# The HandArea emits a signal to a slot with this name (that didn't exist).
-	# Probably a carryover from an old idea of Jesse's, but I didn't want to
-	# unbind it if it was needed, so I made this stub.
-	pass
+				grabbed_item.state = Banan.StateMachine.GRABBED

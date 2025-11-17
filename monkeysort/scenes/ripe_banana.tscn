@@ -3,10 +3,8 @@
 [ext_resource type="Script" uid="uid://c0mtu65dvq2od" path="res://scripts/banan.gd" id="1_ijpbp"]
 [ext_resource type="Texture2D" uid="uid://0vw1u3ug5vq1" path="res://assets/bananas.png" id="1_lxj63"]
 
-[node name="RipeBanana" type="CharacterBody2D"]
+[node name="RipeBanana" type="RigidBody2D"]
 script = ExtResource("1_ijpbp")
-banana_type = null
-on_conveyor = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.15, 0.15)
