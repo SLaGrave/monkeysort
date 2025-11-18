@@ -1,14 +1,17 @@
-[gd_scene load_steps=16 format=3 uid="uid://bg6va57dqqfms"]
+[gd_scene load_steps=19 format=3 uid="uid://bg6va57dqqfms"]
 
 [ext_resource type="PackedScene" uid="uid://dqob51ts1wg6" path="res://assets/background.kra" id="1_0rdsr"]
 [ext_resource type="Texture2D" uid="uid://di501dbahn6a2" path="res://assets/box.png" id="1_d2op2"]
 [ext_resource type="Script" uid="uid://cmc04lyibx04k" path="res://scripts/game.gd" id="1_o6v7o"]
 [ext_resource type="Script" uid="uid://dhr1xnd3176t0" path="res://scripts/arm_controller.gd" id="2_0rdsr"]
+[ext_resource type="AudioStream" uid="uid://b4vlgo5vf4km2" path="res://assets/audio/placeholder_lose.wav" id="2_sp04v"]
 [ext_resource type="PackedScene" uid="uid://duo56lu5y52a4" path="res://scenes/rotten_banana.tscn" id="3_ipu61"]
 [ext_resource type="Script" uid="uid://co2arg6dtin3x" path="res://scripts/box.gd" id="3_wi4c7"]
+[ext_resource type="AudioStream" uid="uid://i7qkfrqofxb5" path="res://assets/audio/placeholder_correct.wav" id="5_8xp80"]
 [ext_resource type="Script" uid="uid://ccrrnfngnjr8h" path="res://scripts/conveyor_area.gd" id="5_nqdth"]
 [ext_resource type="PackedScene" uid="uid://doy6a4jif0gi0" path="res://scenes/ripe_banana.tscn" id="5_ygxny"]
 [ext_resource type="Script" uid="uid://dm6n4npbv1wi8" path="res://scenes/edge_area.gd" id="6_5cypo"]
+[ext_resource type="AudioStream" uid="uid://dy2shyqvr28w5" path="res://assets/audio/placeholder_incorrect.wav" id="6_sp04v"]
 [ext_resource type="Script" uid="uid://cmicso3jmfgdl" path="res://scripts/nanner_spawner.gd" id="6_wi4c7"]
 [ext_resource type="Script" uid="uid://d3xtdp1s4k86d" path="res://scripts/scores.gd" id="8_70vka"]
 [ext_resource type="Script" uid="uid://6dr6fgvh1vs" path="res://scripts/gui.gd" id="12_o6v7o"]
@@ -26,6 +29,9 @@ point_count = 10
 
 [node name="MainGame" type="Node2D"]
 script = ExtResource("1_o6v7o")
+
+[node name="GameOverAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_sp04v")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -53,6 +59,12 @@ rotation = 3.1415925
 scale = Vector2(37.384018, -28.543884)
 polygon = PackedVector2Array(1.8992076, 0.7357092, 3.0226817, -0.6656418, -1.6852121, -0.8057766, -2.755188, 0.5605402)
 
+[node name="AudioCorrect" type="AudioStreamPlayer2D" parent="RipeBox"]
+stream = ExtResource("5_8xp80")
+
+[node name="AudioIncorrect" type="AudioStreamPlayer2D" parent="RipeBox"]
+stream = ExtResource("6_sp04v")
+
 [node name="RottenBox" type="Area2D" parent="."]
 position = Vector2(-329, 372)
 script = ExtResource("3_wi4c7")
@@ -70,6 +82,12 @@ rotation = 3.1415925
 scale = Vector2(37.384018, -28.543884)
 polygon = PackedVector2Array(2.9825583, -0.42040443, 1.9660807, -1.8567896, -2.7418137, -1.926857, -1.6985865, -0.4554386)
 
+[node name="AudioCorrect" type="AudioStreamPlayer2D" parent="RottenBox"]
+stream = ExtResource("5_8xp80")
+
+[node name="AudioIncorrect" type="AudioStreamPlayer2D" parent="RottenBox"]
+stream = ExtResource("6_sp04v")
+
 [node name="UnripeBox" type="Area2D" parent="."]
 position = Vector2(-678, 376)
 script = ExtResource("3_wi4c7")
@@ -86,6 +104,12 @@ position = Vector2(-18.5, -38.00003)
 rotation = 3.1415925
 scale = Vector2(37.384018, -28.543884)
 polygon = PackedVector2Array(2.9558086, -0.4554386, 1.9660797, -1.8567886, -2.7685623, -1.926856, -1.6985874, -0.49047184)
+
+[node name="AudioCorrect" type="AudioStreamPlayer2D" parent="UnripeBox"]
+stream = ExtResource("5_8xp80")
+
+[node name="AudioIncorrect" type="AudioStreamPlayer2D" parent="UnripeBox"]
+stream = ExtResource("6_sp04v")
 
 [node name="ConveyorArea" type="Area2D" parent="."]
 script = ExtResource("5_nqdth")

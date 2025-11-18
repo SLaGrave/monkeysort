@@ -29,6 +29,7 @@ func _on_mistake_made():
 	if Globals._mistakes >= 3:
 		# Restart the current level
 		%GUI.add_bad_text("You Lost!")
+		$GameOverAudio.play()
 		set_level(level)
 	else:
 		%GUI.add_bad_text("Mistake!")
