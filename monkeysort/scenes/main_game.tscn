@@ -32,6 +32,7 @@ script = ExtResource("1_o6v7o")
 
 [node name="GameOverAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_sp04v")
+bus = &"Sound Effects"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -61,9 +62,11 @@ polygon = PackedVector2Array(1.8992076, 0.7357092, 3.0226817, -0.6656418, -1.685
 
 [node name="AudioCorrect" type="AudioStreamPlayer2D" parent="RipeBox"]
 stream = ExtResource("5_8xp80")
+bus = &"Sound Effects"
 
 [node name="AudioIncorrect" type="AudioStreamPlayer2D" parent="RipeBox"]
 stream = ExtResource("6_sp04v")
+bus = &"Sound Effects"
 
 [node name="RottenBox" type="Area2D" parent="."]
 position = Vector2(-329, 372)
@@ -84,9 +87,11 @@ polygon = PackedVector2Array(2.9825583, -0.42040443, 1.9660807, -1.8567896, -2.7
 
 [node name="AudioCorrect" type="AudioStreamPlayer2D" parent="RottenBox"]
 stream = ExtResource("5_8xp80")
+bus = &"Sound Effects"
 
 [node name="AudioIncorrect" type="AudioStreamPlayer2D" parent="RottenBox"]
 stream = ExtResource("6_sp04v")
+bus = &"Sound Effects"
 
 [node name="UnripeBox" type="Area2D" parent="."]
 position = Vector2(-678, 376)
@@ -107,9 +112,11 @@ polygon = PackedVector2Array(2.9558086, -0.4554386, 1.9660797, -1.8567886, -2.76
 
 [node name="AudioCorrect" type="AudioStreamPlayer2D" parent="UnripeBox"]
 stream = ExtResource("5_8xp80")
+bus = &"Sound Effects"
 
 [node name="AudioIncorrect" type="AudioStreamPlayer2D" parent="UnripeBox"]
 stream = ExtResource("6_sp04v")
+bus = &"Sound Effects"
 
 [node name="ConveyorArea" type="Area2D" parent="."]
 script = ExtResource("5_nqdth")
