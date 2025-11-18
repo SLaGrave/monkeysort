@@ -15,12 +15,12 @@ var direction := Vector2.LEFT
 func _ready() -> void:
 	change_state(state)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	mouse_position = get_global_mouse_position()
 	mouse_direction = mouse_position - old_mouse_position
 	old_mouse_position = mouse_position
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	match state:
 		StateMachine.ON_CONVEYOR:
 			linear_velocity = speed * direction
