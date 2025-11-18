@@ -9,5 +9,5 @@ func _ready() -> void:
 func _on_body_entered(body):
 	if body is Banan:
 		if body.banana_type == accepts:
-			Globals._scores[accepts] += 1
+			Globals.increase_score(accepts)
 			body.queue_free()

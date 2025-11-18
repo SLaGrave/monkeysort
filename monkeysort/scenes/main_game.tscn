@@ -34,7 +34,6 @@ z_index = 11
 [node name="RipeBox" type="Area2D" parent="."]
 position = Vector2(299, 383)
 script = ExtResource("3_wi4c7")
-accepts = null
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="RipeBox"]
