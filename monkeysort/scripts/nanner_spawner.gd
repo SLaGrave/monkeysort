@@ -16,5 +16,6 @@ func _ready():
 func _on_timer_timeout() -> void:
 	print(locations.pick_random())
 	var instance: Banan = spawnable_objects.pick_random().instantiate()
+	instance.add_to_group("banans")
 	get_parent().add_child(instance)
 	instance.position = locations.pick_random()
