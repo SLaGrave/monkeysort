@@ -21,3 +21,6 @@ desktop.ini
 *.sublime-workspace
 *.vscode/
 .idea/
+
+# Others
+*.kra~

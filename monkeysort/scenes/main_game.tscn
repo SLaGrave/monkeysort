@@ -1,0 +1,231 @@
+[gd_scene load_steps=19 format=3 uid="uid://bg6va57dqqfms"]
+
+[ext_resource type="PackedScene" uid="uid://dqob51ts1wg6" path="res://assets/background.kra" id="1_0rdsr"]
+[ext_resource type="Texture2D" uid="uid://di501dbahn6a2" path="res://assets/box.png" id="1_d2op2"]
+[ext_resource type="Script" uid="uid://cmc04lyibx04k" path="res://scripts/game.gd" id="1_o6v7o"]
+[ext_resource type="Script" uid="uid://dhr1xnd3176t0" path="res://scripts/arm_controller.gd" id="2_0rdsr"]
+[ext_resource type="AudioStream" uid="uid://b4vlgo5vf4km2" path="res://assets/audio/placeholder_lose.wav" id="2_sp04v"]
+[ext_resource type="PackedScene" uid="uid://duo56lu5y52a4" path="res://scenes/rotten_banana.tscn" id="3_ipu61"]
+[ext_resource type="Script" uid="uid://co2arg6dtin3x" path="res://scripts/box.gd" id="3_wi4c7"]
+[ext_resource type="AudioStream" uid="uid://i7qkfrqofxb5" path="res://assets/audio/placeholder_correct.wav" id="5_8xp80"]
+[ext_resource type="Script" uid="uid://ccrrnfngnjr8h" path="res://scripts/conveyor_area.gd" id="5_nqdth"]
+[ext_resource type="PackedScene" uid="uid://doy6a4jif0gi0" path="res://scenes/ripe_banana.tscn" id="5_ygxny"]
+[ext_resource type="Script" uid="uid://dm6n4npbv1wi8" path="res://scenes/edge_area.gd" id="6_5cypo"]
+[ext_resource type="AudioStream" uid="uid://dy2shyqvr28w5" path="res://assets/audio/placeholder_incorrect.wav" id="6_sp04v"]
+[ext_resource type="Script" uid="uid://cmicso3jmfgdl" path="res://scripts/nanner_spawner.gd" id="6_wi4c7"]
+[ext_resource type="Script" uid="uid://d3xtdp1s4k86d" path="res://scripts/scores.gd" id="8_70vka"]
+[ext_resource type="Script" uid="uid://6dr6fgvh1vs" path="res://scripts/gui.gd" id="12_o6v7o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p73vr"]
+size = Vector2(40, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0rdsr"]
+size = Vector2(2413, 127)
+
+[sub_resource type="Curve" id="Curve_o6v7o"]
+_limits = [0.42907596, 3.0, 0.0, 90.0]
+_data = [Vector2(0, 0.42907596), 0.0, 0.0, 0, 0, Vector2(1e-05, 0.42907596), 0.0, 0.0, 0, 0, Vector2(16.403227, 1.1410358), 0.0, 0.0, 0, 0, Vector2(21.919355, 0.42907596), 0.0, 0.0, 0, 0, Vector2(33.387096, 1.7311832), 0.0, 0.0, 0, 0, Vector2(50.225803, 1.7213473), 0.0, 0.0, 0, 0, Vector2(53.999996, 0.42907596), 0.0, 0.0, 0, 0, Vector2(59.80645, 0.42907596), 0.0, 0.0, 0, 0, Vector2(60.532253, 2.2328086), 0.0, 0.0, 0, 0, Vector2(77.951614, 1.5541389), 0.0, 0.0, 0, 0]
+point_count = 10
+
+[node name="MainGame" type="Node2D"]
+script = ExtResource("1_o6v7o")
+
+[node name="GameOverAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_sp04v")
+bus = &"Sound Effects"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="background" parent="." instance=ExtResource("1_0rdsr")]
+position = Vector2(-960, -540)
+
+[node name="Near Wall" parent="background" index="6"]
+z_index = 11
+
+[node name="RipeBox" type="Area2D" parent="."]
+position = Vector2(299, 383)
+script = ExtResource("3_wi4c7")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="RipeBox"]
+modulate = Color(0.6715544, 0.6942426, 3.85046e-07, 1)
+rotation = -0.03490658
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_d2op2")
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="RipeBox"]
+position = Vector2(25, -71)
+rotation = 3.1415925
+scale = Vector2(37.384018, -28.543884)
+polygon = PackedVector2Array(1.8992076, 0.7357092, 3.0226817, -0.6656418, -1.6852121, -0.8057766, -2.755188, 0.5605402)
+
+[node name="AudioCorrect" type="AudioStreamPlayer2D" parent="RipeBox"]
+stream = ExtResource("5_8xp80")
+bus = &"Sound Effects"
+
+[node name="AudioIncorrect" type="AudioStreamPlayer2D" parent="RipeBox"]
+stream = ExtResource("6_sp04v")
+bus = &"Sound Effects"
+
+[node name="RottenBox" type="Area2D" parent="."]
+position = Vector2(-329, 372)
+script = ExtResource("3_wi4c7")
+accepts = 2
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="RottenBox"]
+modulate = Color(1, 0.4776129, 0.41281223, 1)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_d2op2")
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="RottenBox"]
+position = Vector2(-18.5, -38.00003)
+rotation = 3.1415925
+scale = Vector2(37.384018, -28.543884)
+polygon = PackedVector2Array(2.9825583, -0.42040443, 1.9660807, -1.8567896, -2.7418137, -1.926857, -1.6985865, -0.4554386)
+
+[node name="AudioCorrect" type="AudioStreamPlayer2D" parent="RottenBox"]
+stream = ExtResource("5_8xp80")
+bus = &"Sound Effects"
+
+[node name="AudioIncorrect" type="AudioStreamPlayer2D" parent="RottenBox"]
+stream = ExtResource("6_sp04v")
+bus = &"Sound Effects"
+
+[node name="UnripeBox" type="Area2D" parent="."]
+position = Vector2(-678, 376)
+script = ExtResource("3_wi4c7")
+accepts = 1
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="UnripeBox"]
+modulate = Color(4.0911136e-06, 0.7956194, 0.2148616, 1)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_d2op2")
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="UnripeBox"]
+position = Vector2(-18.5, -38.00003)
+rotation = 3.1415925
+scale = Vector2(37.384018, -28.543884)
+polygon = PackedVector2Array(2.9558086, -0.4554386, 1.9660797, -1.8567886, -2.7685623, -1.926856, -1.6985874, -0.49047184)
+
+[node name="AudioCorrect" type="AudioStreamPlayer2D" parent="UnripeBox"]
+stream = ExtResource("5_8xp80")
+bus = &"Sound Effects"
+
+[node name="AudioIncorrect" type="AudioStreamPlayer2D" parent="UnripeBox"]
+stream = ExtResource("6_sp04v")
+bus = &"Sound Effects"
+
+[node name="ConveyorArea" type="Area2D" parent="."]
+script = ExtResource("5_nqdth")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ConveyorArea"]
+polygon = PackedVector2Array(-340, -127, 1279, -116, 1277, 13, -492, 11)
+
+[node name="EdgeArea" type="Area2D" parent="."]
+script = ExtResource("6_5cypo")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="EdgeArea"]
+polygon = PackedVector2Array(-367, -127, -342, -128, -496, 12, -539, 11)
+
+[node name="ArmPivot" type="Node2D" parent="."]
+position = Vector2(-3, 563)
+script = ExtResource("2_0rdsr")
+color = Color(0.26863337, 4.4520945e-07, 2.0455569e-07, 1)
+metadata/_edit_group_ = true
+
+[node name="HandArea" type="Area2D" parent="ArmPivot"]
+unique_name_in_owner = true
+position = Vector2(1, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ArmPivot/HandArea"]
+shape = SubResource("RectangleShape2D_p73vr")
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2(-12, 474)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+shape = SubResource("RectangleShape2D_0rdsr")
+debug_color = Color(0.8371058, 0.38709053, 0, 0.41960785)
+
+[node name="NannerSpawner" type="Node" parent="."]
+script = ExtResource("6_wi4c7")
+spawnable_objects = Array[PackedScene]([ExtResource("5_ygxny"), ExtResource("3_ipu61")])
+spawn_rate = SubResource("Curve_o6v7o")
+
+[node name="Node2D" type="Node2D" parent="NannerSpawner"]
+position = Vector2(1126, -124)
+
+[node name="Node2D2" type="Node2D" parent="NannerSpawner"]
+position = Vector2(1126, -124)
+
+[node name="Node2D3" type="Node2D" parent="NannerSpawner"]
+position = Vector2(1126, -106)
+
+[node name="Node2D4" type="Node2D" parent="NannerSpawner"]
+position = Vector2(1126, -87)
+
+[node name="Node2D5" type="Node2D" parent="NannerSpawner"]
+position = Vector2(1126, -69)
+
+[node name="Node2D6" type="Node2D" parent="NannerSpawner"]
+position = Vector2(1126, -48)
+
+[node name="Node2D7" type="Node2D" parent="NannerSpawner"]
+position = Vector2(1126, -31)
+
+[node name="Node2D8" type="Node2D" parent="NannerSpawner"]
+position = Vector2(1126, -10)
+
+[node name="Scores" type="Label" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -894.0
+offset_top = -512.0
+offset_right = -776.0
+offset_bottom = -489.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "HOJASDLJNASD"
+script = ExtResource("8_70vka")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GUI" type="Control" parent="CanvasLayer"]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("12_o6v7o")
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/GUI"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1530.0
+offset_top = -52.0
+offset_right = -22.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+max_value = 90.0
+show_percentage = false
+
+[connection signal="body_entered" from="ConveyorArea" to="ConveyorArea" method="_on_body_entered"]
+[connection signal="body_entered" from="EdgeArea" to="EdgeArea" method="_on_body_entered"]
+[connection signal="body_exited" from="EdgeArea" to="EdgeArea" method="_on_body_exited"]
+[connection signal="body_entered" from="ArmPivot/HandArea" to="ArmPivot" method="_on_hand_area_body_entered"]
+
+[editable path="background"]
