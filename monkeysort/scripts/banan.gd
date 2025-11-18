@@ -26,12 +26,6 @@ func _physics_process(delta: float) -> void:
 			linear_velocity = speed * direction
 		StateMachine.GRABBED:
 			apply_central_force(500.0 * (mouse_position - global_position))
-			#global_position = mouse_position
-	#var collision_info = move_and_collide(delta * speed * direction)
-	#if collision_info:
-		#var collider = collision_info.get_collider()
-		#if collider is MS_Box:
-			#hit_a_box(collider)
 
 
 var mouse_direction: Vector2 = Vector2()
@@ -39,12 +33,6 @@ var old_mouse_position: Vector2 = Vector2()
 var mouse_position: Vector2 = Vector2()
 
 func change_state(new_state: StateMachine):
-	
-	# On exiting old state
-	#match state:
-		#StateMachine.GRABBED:
-			#apply_central_impulse(mouse_direction * 1000.0)
-	
 	state = new_state
 	# On entering new state
 	match state:
@@ -68,8 +56,3 @@ func change_state(new_state: StateMachine):
 			collision_layer = 1
 			collision_mask = 1
 			linear_damp = 0.0
-
-func hit_a_box(box: MS_Box):
-	if box.accepts == banana_type:
-		Globals.increase_score(banana_type)
-		queue_free()

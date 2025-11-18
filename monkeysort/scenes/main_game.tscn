@@ -31,9 +31,10 @@ position = Vector2(-960, -540)
 [node name="Near Wall" parent="background" index="6"]
 z_index = 11
 
-[node name="RipeBox" type="StaticBody2D" parent="."]
+[node name="RipeBox" type="Area2D" parent="."]
 position = Vector2(299, 383)
 script = ExtResource("3_wi4c7")
+accepts = null
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="RipeBox"]
@@ -49,7 +50,7 @@ rotation = 3.1415925
 scale = Vector2(37.384018, -28.543884)
 polygon = PackedVector2Array(1.8992076, 0.7357092, 3.0226817, -0.6656418, -1.6852121, -0.8057766, -2.755188, 0.5605402)
 
-[node name="RottenBox" type="StaticBody2D" parent="."]
+[node name="RottenBox" type="Area2D" parent="."]
 position = Vector2(-329, 372)
 script = ExtResource("3_wi4c7")
 accepts = 2
@@ -66,7 +67,7 @@ rotation = 3.1415925
 scale = Vector2(37.384018, -28.543884)
 polygon = PackedVector2Array(2.9825583, -0.42040443, 1.9660807, -1.8567896, -2.7418137, -1.926857, -1.6985865, -0.4554386)
 
-[node name="UnripeBox" type="StaticBody2D" parent="."]
+[node name="UnripeBox" type="Area2D" parent="."]
 position = Vector2(-678, 376)
 script = ExtResource("3_wi4c7")
 accepts = 1

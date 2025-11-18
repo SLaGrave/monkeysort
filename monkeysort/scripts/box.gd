@@ -1,3 +1,13 @@
-class_name MS_Box extends StaticBody2D
+class_name BananBox extends Area2D
 
 @export var accepts: Banan.BananaType
+
+
+func _ready() -> void:
+	body_entered.connect(_on_body_entered)
+
+func _on_body_entered(body):
+	if body is Banan:
+		if body.banana_type == accepts:
+			Globals._scores[accepts] += 1
+			body.queue_free()
