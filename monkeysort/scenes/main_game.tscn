@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dqob51ts1wg6" path="res://assets/background.kra" id="1_0rdsr"]
 [ext_resource type="Texture2D" uid="uid://di501dbahn6a2" path="res://assets/box.png" id="1_d2op2"]
-[ext_resource type="Script" uid="uid://cdtknbauvb3tr" path="res://scripts/keyboard_controls.gd" id="1_ipu61"]
+[ext_resource type="Script" uid="uid://cmc04lyibx04k" path="res://scripts/game.gd" id="1_o6v7o"]
 [ext_resource type="Script" uid="uid://dhr1xnd3176t0" path="res://scripts/arm_controller.gd" id="2_0rdsr"]
 [ext_resource type="PackedScene" uid="uid://duo56lu5y52a4" path="res://scenes/rotten_banana.tscn" id="3_ipu61"]
 [ext_resource type="Script" uid="uid://co2arg6dtin3x" path="res://scripts/box.gd" id="3_wi4c7"]
@@ -19,9 +19,7 @@ size = Vector2(40, 40)
 size = Vector2(2413, 127)
 
 [node name="MainGame" type="Node2D"]
-
-[node name="KeyboardControls" type="Node" parent="."]
-script = ExtResource("1_ipu61")
+script = ExtResource("1_o6v7o")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
