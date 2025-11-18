@@ -3,6 +3,8 @@ extends Node
 @export var conveyor_speed: float = 500.0
 @export var gravity: float = 100.0
 
+@export var mistakes_allowed: int = 3
+
 var time_elapsed: float
 
 signal score_increased
