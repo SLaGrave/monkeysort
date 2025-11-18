@@ -1,12 +1,16 @@
 extends Node2D
 
-
 @export var level = 0:
 	set = set_level
 
 func _ready() -> void:
 	Globals.mistake_made.connect(_on_mistake_made)
 	Globals.score_increased.connect(_on_score_increased)
+
+func _process(delta: float) -> void:
+	Globals.time_elapsed += delta
+	print(Globals.time_elapsed)
+	%ProgressBar.value = Globals.time_elapsed
 
 func _input(event):
 	if event.is_action_pressed("close"):

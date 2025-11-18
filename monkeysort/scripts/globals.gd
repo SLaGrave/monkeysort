@@ -3,10 +3,13 @@ extends Node
 @export var conveyor_speed: float = 500.0
 @export var gravity: float = 100.0
 
+var time_elapsed: float
+
 signal score_increased
 signal mistake_made
 
 func reset():
+	time_elapsed = 0
 	_mistakes = 0
 	for key in _scores:
 		_scores[key] = 0

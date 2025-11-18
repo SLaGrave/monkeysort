@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bg6va57dqqfms"]
+[gd_scene load_steps=16 format=3 uid="uid://bg6va57dqqfms"]
 
 [ext_resource type="PackedScene" uid="uid://dqob51ts1wg6" path="res://assets/background.kra" id="1_0rdsr"]
 [ext_resource type="Texture2D" uid="uid://di501dbahn6a2" path="res://assets/box.png" id="1_d2op2"]
@@ -18,6 +18,11 @@ size = Vector2(40, 40)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0rdsr"]
 size = Vector2(2413, 127)
+
+[sub_resource type="Curve" id="Curve_o6v7o"]
+_limits = [0.42907596, 3.0, 0.0, 90.0]
+_data = [Vector2(0, 0.42907596), 0.0, 0.0, 0, 0, Vector2(1e-05, 0.42907596), 0.0, 0.0, 0, 0, Vector2(16.403227, 1.1410358), 0.0, 0.0, 0, 0, Vector2(21.919355, 0.42907596), 0.0, 0.0, 0, 0, Vector2(33.387096, 1.7311832), 0.0, 0.0, 0, 0, Vector2(50.225803, 1.7213473), 0.0, 0.0, 0, 0, Vector2(53.999996, 0.42907596), 0.0, 0.0, 0, 0, Vector2(59.80645, 0.42907596), 0.0, 0.0, 0, 0, Vector2(60.532253, 2.2328086), 0.0, 0.0, 0, 0, Vector2(77.951614, 1.5541389), 0.0, 0.0, 0, 0]
+point_count = 10
 
 [node name="MainGame" type="Node2D"]
 script = ExtResource("1_o6v7o")
@@ -118,6 +123,7 @@ debug_color = Color(0.8371058, 0.38709053, 0, 0.41960785)
 [node name="NannerSpawner" type="Node" parent="."]
 script = ExtResource("6_wi4c7")
 spawnable_objects = Array[PackedScene]([ExtResource("5_ygxny"), ExtResource("3_ipu61")])
+spawn_rate = SubResource("Curve_o6v7o")
 
 [node name="Node2D" type="Node2D" parent="NannerSpawner"]
 position = Vector2(1126, -124)
@@ -169,6 +175,22 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("12_o6v7o")
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/GUI"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1530.0
+offset_top = -52.0
+offset_right = -22.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+max_value = 90.0
+show_percentage = false
 
 [connection signal="body_entered" from="ConveyorArea" to="ConveyorArea" method="_on_body_entered"]
 [connection signal="body_entered" from="EdgeArea" to="EdgeArea" method="_on_body_entered"]
