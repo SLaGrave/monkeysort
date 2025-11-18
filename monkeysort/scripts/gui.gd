@@ -10,6 +10,7 @@ func add_good_text(text: String):
 	label.modulate = Color.GREEN
 	add_child(label)
 	label.pivot_offset = label.size / 2.0
+	label.position = get_viewport().get_mouse_position()
 	
 	var tween := get_tree().create_tween().set_trans(Tween.TRANS_ELASTIC)
 	tween.tween_method(func(x): label.rotation_degrees = x, 0, (randi() % 2 * 2 - 1) * 720, 2.0)
