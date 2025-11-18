@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bg6va57dqqfms"]
+[gd_scene load_steps=15 format=3 uid="uid://bg6va57dqqfms"]
 
 [ext_resource type="PackedScene" uid="uid://dqob51ts1wg6" path="res://assets/background.kra" id="1_0rdsr"]
 [ext_resource type="Texture2D" uid="uid://di501dbahn6a2" path="res://assets/box.png" id="1_d2op2"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://dm6n4npbv1wi8" path="res://scenes/edge_area.gd" id="6_5cypo"]
 [ext_resource type="Script" uid="uid://cmicso3jmfgdl" path="res://scripts/nanner_spawner.gd" id="6_wi4c7"]
 [ext_resource type="Script" uid="uid://d3xtdp1s4k86d" path="res://scripts/scores.gd" id="8_70vka"]
+[ext_resource type="Script" uid="uid://6dr6fgvh1vs" path="res://scripts/gui.gd" id="12_o6v7o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p73vr"]
 size = Vector2(40, 40)
@@ -143,13 +144,31 @@ position = Vector2(1126, -31)
 position = Vector2(1126, -10)
 
 [node name="Scores" type="Label" parent="."]
-modulate = Color(0, 0, 0, 1)
-offset_left = -905.0
-offset_top = -501.0
-offset_right = -787.0
-offset_bottom = -478.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -894.0
+offset_top = -512.0
+offset_right = -776.0
+offset_bottom = -489.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "HOJASDLJNASD"
 script = ExtResource("8_70vka")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GUI" type="Control" parent="CanvasLayer"]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("12_o6v7o")
 
 [connection signal="body_entered" from="ConveyorArea" to="ConveyorArea" method="_on_body_entered"]
 [connection signal="body_entered" from="EdgeArea" to="EdgeArea" method="_on_body_entered"]
