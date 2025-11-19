@@ -32,10 +32,10 @@ func _on_mistake_made():
 	if Globals._mistakes >= Globals.mistakes_allowed:
 		restart_current_level()
 	else:
-		%GUI.add_bad_text("Mistake!")
+		gui.add_bad_text("Mistake!")
 
 func restart_current_level():
 	# Restart the current level
-	%GUI.add_bad_text("You Lost!")
+	gui.add_bad_text("You Lost!")
 	game_over_audio.play()
 	set_level(level)
