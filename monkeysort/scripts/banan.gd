@@ -1,16 +1,19 @@
 class_name Banan extends RigidBody2D
 
 enum BananaType { RIPE, UNRIPE, ROTTEN }
-enum StateMachine { ON_CONVEYOR, ON_CONVEYOR_EDGE, GRABBED, FALLING }
+enum StateMachine { ON_CONVEYOR, ON_CONVEYOR_EDGE, GRABBED, FALLING, ON_FLOOR }
 
 @export var banana_type: BananaType
 
-var state := StateMachine.ON_CONVEYOR
+var state: StateMachine = StateMachine.ON_CONVEYOR
 
 # Initial (on conveyor) settings
 var speed := Globals.conveyor_speed
 var direction := Vector2.LEFT
 
+@onready var audio_grabbed = $Audio/Grabbed
+@onready var audio_dropped = $Audio/Dropped
+@onready var audio_hit_ground = $Audio/HitGround
 
 func _ready() -> void:
 	change_state(state)
@@ -33,6 +36,8 @@ var old_mouse_position: Vector2 = Vector2()
 var mouse_position: Vector2 = Vector2()
 
 func change_state(new_state: StateMachine):
+	# The origin state matters for a few transitions
+	var old_state = state
 	state = new_state
 	# On entering new state
 	match state:
@@ -46,6 +51,7 @@ func change_state(new_state: StateMachine):
 			speed = 0.0
 			linear_damp = 20.0
 		StateMachine.GRABBED:
+			audio_grabbed.play()
 			gravity_scale = 0.0
 			collision_layer = 0
 			collision_mask = 0
@@ -56,3 +62,14 @@ func change_state(new_state: StateMachine):
 			collision_layer = 1
 			collision_mask = 1
 			linear_damp = 0.0
+		StateMachine.ON_FLOOR:
+			print("On Floor")
+	handle_audio(state, old_state)
+
+func handle_audio(new_state, old_state):
+	# Grabbing sound effect
+	if new_state == StateMachine.GRABBED: audio_grabbed.play()
+	# Dropping sound effect
+	if old_state == StateMachine.GRABBED: audio_dropped.play()
+	# HitGround sound effect
+	if new_state == StateMachine.ON_FLOOR: audio_hit_ground.play()

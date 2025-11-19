@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bg6va57dqqfms"]
+[gd_scene load_steps=20 format=3 uid="uid://bg6va57dqqfms"]
 
 [ext_resource type="PackedScene" uid="uid://dqob51ts1wg6" path="res://assets/background.kra" id="1_0rdsr"]
 [ext_resource type="Texture2D" uid="uid://di501dbahn6a2" path="res://assets/box.png" id="1_d2op2"]
@@ -14,6 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://dy2shyqvr28w5" path="res://assets/audio/placeholder_incorrect.wav" id="6_sp04v"]
 [ext_resource type="Script" uid="uid://cmicso3jmfgdl" path="res://scripts/nanner_spawner.gd" id="6_wi4c7"]
 [ext_resource type="Script" uid="uid://d3xtdp1s4k86d" path="res://scripts/scores.gd" id="8_70vka"]
+[ext_resource type="Script" uid="uid://sopi4r8c0pme" path="res://scripts/floor_area.gd" id="11_ihbck"]
 [ext_resource type="Script" uid="uid://6dr6fgvh1vs" path="res://scripts/gui.gd" id="12_o6v7o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p73vr"]
@@ -30,7 +31,9 @@ point_count = 10
 [node name="MainGame" type="Node2D"]
 script = ExtResource("1_o6v7o")
 
-[node name="GameOverAudio" type="AudioStreamPlayer2D" parent="."]
+[node name="Sound Effects (non-Box & non-Banan))" type="Node" parent="."]
+
+[node name="GameOver" type="AudioStreamPlayer2D" parent="Sound Effects (non-Box & non-Banan))"]
 stream = ExtResource("2_sp04v")
 bus = &"Sound Effects"
 
@@ -151,6 +154,13 @@ metadata/_edit_group_ = true
 shape = SubResource("RectangleShape2D_0rdsr")
 debug_color = Color(0.8371058, 0.38709053, 0, 0.41960785)
 
+[node name="FloorArea" type="Area2D" parent="Floor"]
+position = Vector2(-10, -30)
+script = ExtResource("11_ihbck")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Floor/FloorArea"]
+polygon = PackedVector2Array(-1198, -11, -1201, -41, 1225, -39, 1226, -3)
+
 [node name="NannerSpawner" type="Node" parent="."]
 script = ExtResource("6_wi4c7")
 spawnable_objects = Array[PackedScene]([ExtResource("5_ygxny"), ExtResource("3_ipu61")])
@@ -227,5 +237,6 @@ show_percentage = false
 [connection signal="body_entered" from="EdgeArea" to="EdgeArea" method="_on_body_entered"]
 [connection signal="body_exited" from="EdgeArea" to="EdgeArea" method="_on_body_exited"]
 [connection signal="body_entered" from="ArmPivot/HandArea" to="ArmPivot" method="_on_hand_area_body_entered"]
+[connection signal="body_entered" from="Floor/FloorArea" to="Floor/FloorArea" method="_on_body_entered"]
 
 [editable path="background"]
