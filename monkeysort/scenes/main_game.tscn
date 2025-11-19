@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bg6va57dqqfms"]
+[gd_scene load_steps=30 format=3 uid="uid://bg6va57dqqfms"]
 
 [ext_resource type="PackedScene" uid="uid://dqob51ts1wg6" path="res://assets/background.kra" id="1_0rdsr"]
 [ext_resource type="Texture2D" uid="uid://di501dbahn6a2" path="res://assets/box.png" id="1_d2op2"]
@@ -17,6 +17,8 @@
 [ext_resource type="Script" uid="uid://d3xtdp1s4k86d" path="res://scripts/scores.gd" id="8_70vka"]
 [ext_resource type="Script" uid="uid://sopi4r8c0pme" path="res://scripts/floor_area.gd" id="11_ihbck"]
 [ext_resource type="Script" uid="uid://6dr6fgvh1vs" path="res://scripts/gui.gd" id="12_o6v7o"]
+[ext_resource type="Texture2D" uid="uid://cn70xl54l8wlx" path="res://assets/loading_bar/loading_bar_bg.png" id="17_5luka"]
+[ext_resource type="Texture2D" uid="uid://cjm5gt5faxndt" path="res://assets/loading_bar/loading_bar_fg.png" id="18_yu8cv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p73vr"]
 size = Vector2(40, 40)
@@ -28,6 +30,32 @@ size = Vector2(2413, 127)
 _limits = [0.42907596, 3.0, 0.0, 90.0]
 _data = [Vector2(0, 0.42907596), 0.0, 0.0, 0, 0, Vector2(1e-05, 0.42907596), 0.0, 0.0, 0, 0, Vector2(16.403227, 1.1410358), 0.0, 0.0, 0, 0, Vector2(21.919355, 0.42907596), 0.0, 0.0, 0, 0, Vector2(33.387096, 1.7311832), 0.0, 0.0, 0, 0, Vector2(50.225803, 1.7213473), 0.0, 0.0, 0, 0, Vector2(53.999996, 0.42907596), 0.0, 0.0, 0, 0, Vector2(59.80645, 0.42907596), 0.0, 0.0, 0, 0, Vector2(60.532253, 2.2328086), 0.0, 0.0, 0, 0, Vector2(77.951614, 1.5541389), 0.0, 0.0, 0, 0]
 point_count = 10
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ikqpi"]
+atlas = ExtResource("17_5luka")
+region = Rect2(1415.0728, 955.84216, 477.0415, 119.2605)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5wboo"]
+texture = SubResource("AtlasTexture_ikqpi")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5luka"]
+atlas = ExtResource("18_yu8cv")
+region = Rect2(1408.7959, 949.5653, 480.17993, 134.95264)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ibnub"]
+texture = SubResource("AtlasTexture_5luka")
+
+[sub_resource type="Theme" id="Theme_5luka"]
+ProgressBar/styles/background = SubResource("StyleBoxTexture_5wboo")
+ProgressBar/styles/fill = SubResource("StyleBoxTexture_ibnub")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yu8cv"]
+atlas = ExtResource("17_5luka")
+region = Rect2(1423.0804, 948.54553, 451.81848, 133.63647)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ibnub"]
+atlas = ExtResource("18_yu8cv")
+region = Rect2(1418.8076, 951.3176, 458.677, 128.09924)
 
 [node name="MainGame" type="Node2D"]
 script = ExtResource("1_o6v7o")
@@ -218,21 +246,24 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("12_o6v7o")
 
-[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/GUI"]
+[node name="ProgressBar" type="TextureProgressBar" parent="CanvasLayer/GUI"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1530.0
-offset_top = -52.0
-offset_right = -22.0
-offset_bottom = -16.0
+offset_left = 1436.0
+offset_top = -1080.0
+offset_right = -1.0
+offset_bottom = -920.0
 grow_horizontal = 2
 grow_vertical = 0
+theme = SubResource("Theme_5luka")
 max_value = 90.0
-show_percentage = false
+step = 0.1
+texture_under = SubResource("AtlasTexture_yu8cv")
+texture_progress = SubResource("AtlasTexture_ibnub")
 
 [node name="StrikeOutBoxes" parent="." instance=ExtResource("4_vnsdt")]
 
