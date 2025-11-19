@@ -13,7 +13,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	Globals.time_elapsed += delta
-	print(Globals.time_elapsed)
+	#print(Globals.time_elapsed)
 	progress_bar.value = Globals.time_elapsed
 
 func _input(event):

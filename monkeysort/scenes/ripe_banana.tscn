@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://doy6a4jif0gi0"]
+[gd_scene load_steps=6 format=3 uid="uid://doy6a4jif0gi0"]
 
 [ext_resource type="Script" uid="uid://c0mtu65dvq2od" path="res://scripts/banan.gd" id="1_ijpbp"]
 [ext_resource type="Texture2D" uid="uid://0vw1u3ug5vq1" path="res://assets/bananas.png" id="1_lxj63"]
+[ext_resource type="AudioStream" uid="uid://qhygveccdfb1" path="res://assets/audio/placeholder_pickup.wav" id="3_ankic"]
+[ext_resource type="AudioStream" uid="uid://baj7b77ppy2hx" path="res://assets/audio/placeholder_drop.wav" id="4_x68sn"]
+[ext_resource type="AudioStream" uid="uid://bkier0hi0t7sy" path="res://assets/audio/placeholder_hitGround.wav" id="5_f1x0w"]
 
 [node name="RipeBanana" type="RigidBody2D"]
 script = ExtResource("1_ijpbp")
@@ -14,3 +17,17 @@ region_rect = Rect2(672.942, 880.502, 502.14868, 517.8409)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-33, 27, -20, 25, -8, 20, 3, 11, 10, -1, 16, -15, 22, -26, 26, -31, 30, -32, 31, -26, 30, -18, 29, -6, 25, 5, 18, 16, 9, 23, -1, 29, -11, 33, -21, 33)
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="Grabbed" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("3_ankic")
+bus = &"Sound Effects"
+
+[node name="Dropped" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("4_x68sn")
+bus = &"Sound Effects"
+
+[node name="HitGround" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("5_f1x0w")
+bus = &"Sound Effects"
