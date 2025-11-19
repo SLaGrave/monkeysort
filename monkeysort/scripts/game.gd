@@ -38,4 +38,13 @@ func restart_current_level():
 	# Restart the current level
 	gui.add_bad_text("You Lost!")
 	game_over_audio.play()
+	# Delay the restart by 2 seconds
+	var timer := Timer.new()
+	timer.one_shot = true
+	timer.wait_time = 2.0
+	timer.timeout.connect(_second_half)
+	add_child(timer)
+	timer.start()
+	
+func _second_half():
 	set_level(level)

@@ -10,6 +10,7 @@ func _ready():
 	Globals.game_reset.connect(reset)
 
 func inc():
+	idx %= 3  # This shouldn't be needed but I wanna be safe
 	subs[idx].setme(true)
 	idx += 1
 
