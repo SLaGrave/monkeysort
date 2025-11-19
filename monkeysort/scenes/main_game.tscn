@@ -30,7 +30,9 @@ point_count = 10
 [node name="MainGame" type="Node2D"]
 script = ExtResource("1_o6v7o")
 
-[node name="GameOverAudio" type="AudioStreamPlayer2D" parent="."]
+[node name="Sound Effects (non-Box)" type="Node" parent="."]
+
+[node name="GameOver" type="AudioStreamPlayer2D" parent="Sound Effects (non-Box)"]
 stream = ExtResource("2_sp04v")
 bus = &"Sound Effects"
 

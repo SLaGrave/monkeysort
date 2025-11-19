@@ -5,7 +5,7 @@ extends Node2D
 
 @onready var gui = %GUI
 @onready var progress_bar = %ProgressBar
-@onready var game_over_audio = $GameOverAudio
+@onready var game_over_audio = $"Sound Effects (non-Box)/GameOver"
 
 func _ready() -> void:
 	Globals.mistake_made.connect(_on_mistake_made)
