@@ -9,12 +9,14 @@ var time_elapsed: float
 
 signal score_increased
 signal mistake_made
+signal game_reset
 
 func reset():
 	time_elapsed = 0
 	_mistakes = 0
 	for key in _scores:
 		_scores[key] = 0
+	game_reset.emit()
 
 #******************************************************************************#
 #                     Score Keeping                                            #
