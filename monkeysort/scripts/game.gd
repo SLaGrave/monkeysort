@@ -5,7 +5,7 @@ extends Node2D
 
 @onready var gui = %GUI
 @onready var progress_bar = %ProgressBar
-@onready var game_over_audio = $"Sound Effects (non-Box)/GameOver"
+@onready var game_over_audio = $"Sound Effects (non-Box & non-Banan))/GameOver"
 
 func _ready() -> void:
 	Globals.mistake_made.connect(_on_mistake_made)
@@ -38,4 +38,13 @@ func restart_current_level():
 	# Restart the current level
 	gui.add_bad_text("You Lost!")
 	game_over_audio.play()
+	# Delay the restart by 2 seconds
+	var timer := Timer.new()
+	timer.one_shot = true
+	timer.wait_time = 2.0
+	timer.timeout.connect(_second_half)
+	add_child(timer)
+	timer.start()
+	
+func _second_half():
 	set_level(level)
