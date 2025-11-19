@@ -1,7 +1,5 @@
 class_name StrikeOutBox extends Node
 
-var _state: bool = false
-
 @onready var good = $Good
 @onready var bad = $Bad
 

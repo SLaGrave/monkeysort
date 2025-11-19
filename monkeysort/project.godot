@@ -35,10 +35,6 @@ window/stretch/aspect="keep_width"
 
 enabled=PackedStringArray("res://addons/godot-krita-importer/plugin.cfg")
 
-[gui]
-
-theme/custom="uid://d4fouguc0lc37"
-
 [input]
 
 grab={
