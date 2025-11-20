@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bg6va57dqqfms"]
+[gd_scene load_steps=34 format=3 uid="uid://bg6va57dqqfms"]
 
 [ext_resource type="PackedScene" uid="uid://dqob51ts1wg6" path="res://assets/background.kra" id="1_0rdsr"]
 [ext_resource type="Texture2D" uid="uid://di501dbahn6a2" path="res://assets/box.png" id="1_d2op2"]
@@ -7,7 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://b4vlgo5vf4km2" path="res://assets/audio/placeholder_lose.wav" id="2_sp04v"]
 [ext_resource type="PackedScene" uid="uid://duo56lu5y52a4" path="res://scenes/rotten_banana.tscn" id="3_ipu61"]
 [ext_resource type="Script" uid="uid://co2arg6dtin3x" path="res://scripts/box.gd" id="3_wi4c7"]
-[ext_resource type="PackedScene" uid="uid://bs5oxui8m7tqe" path="res://scenes/StrikeOutBoxes.tscn" id="4_vnsdt"]
+[ext_resource type="PackedScene" path="res://scenes/StrikeOutBoxes.tscn" id="4_vnsdt"]
 [ext_resource type="AudioStream" uid="uid://i7qkfrqofxb5" path="res://assets/audio/placeholder_correct.wav" id="5_8xp80"]
 [ext_resource type="Script" uid="uid://ccrrnfngnjr8h" path="res://scripts/conveyor_area.gd" id="5_nqdth"]
 [ext_resource type="PackedScene" uid="uid://doy6a4jif0gi0" path="res://scenes/ripe_banana.tscn" id="5_ygxny"]
@@ -15,10 +15,11 @@
 [ext_resource type="AudioStream" uid="uid://dy2shyqvr28w5" path="res://assets/audio/placeholder_incorrect.wav" id="6_sp04v"]
 [ext_resource type="Script" uid="uid://cmicso3jmfgdl" path="res://scripts/nanner_spawner.gd" id="6_wi4c7"]
 [ext_resource type="Script" uid="uid://d3xtdp1s4k86d" path="res://scripts/scores.gd" id="8_70vka"]
-[ext_resource type="Script" uid="uid://sopi4r8c0pme" path="res://scripts/floor_area.gd" id="11_ihbck"]
+[ext_resource type="Script" path="res://scripts/floor_area.gd" id="11_ihbck"]
 [ext_resource type="Script" uid="uid://6dr6fgvh1vs" path="res://scripts/gui.gd" id="12_o6v7o"]
 [ext_resource type="Texture2D" uid="uid://cn70xl54l8wlx" path="res://assets/loading_bar/loading_bar_bg.png" id="17_5luka"]
 [ext_resource type="Texture2D" uid="uid://cjm5gt5faxndt" path="res://assets/loading_bar/loading_bar_fg.png" id="18_yu8cv"]
+[ext_resource type="PackedScene" uid="uid://c4ud3qmkqbup4" path="res://scenes/inspector.tscn" id="20_yu8cv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p73vr"]
 size = Vector2(40, 40)
@@ -56,6 +57,85 @@ region = Rect2(1423.0804, 948.54553, 451.81848, 133.63647)
 [sub_resource type="AtlasTexture" id="AtlasTexture_ibnub"]
 atlas = ExtResource("18_yu8cv")
 region = Rect2(1418.8076, 951.3176, 458.677, 128.09924)
+
+[sub_resource type="Animation" id="Animation_ibnub"]
+resource_name = "walk"
+length = 8.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Inspector:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.96666664, 2.9666667, 4.9333334, 6.9666667),
+"transitions": PackedFloat32Array(1, -2, 1, -2, 1),
+"update": 0,
+"values": [Vector2(-719, 80), Vector2(-719, 80), Vector2(-159.00006, -329.99997), Vector2(-159.00006, -329.99997), Vector2(-719, 80)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Inspector:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.96666664, 2.9666667, 4.9333334, 6.9666667),
+"transitions": PackedFloat32Array(1, -2, 1, -2, 1),
+"update": 0,
+"values": [Vector2(0.7, 0.7), Vector2(0.7, 0.7), Vector2(0.15, 0.15), Vector2(0.15, 0.15), Vector2(0.7, 0.7)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Inspector")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3.9666667),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"face_back"
+}, {
+"args": [],
+"method": &"face_front"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_5wboo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Inspector:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-719, 80)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Inspector:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.7, 0.7)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6de02"]
+_data = {
+&"RESET": SubResource("Animation_5wboo"),
+&"walk": SubResource("Animation_ibnub")
+}
 
 [node name="MainGame" type="Node2D"]
 script = ExtResource("1_o6v7o")
@@ -223,10 +303,10 @@ position = Vector2(1126, -10)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -960.0
-offset_top = -214.0
-offset_right = -725.0
-offset_bottom = -169.0
+offset_left = -1451.0
+offset_top = -390.0
+offset_right = -1216.0
+offset_bottom = -345.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "HOJASDLJNASD"
@@ -267,6 +347,16 @@ texture_progress = SubResource("AtlasTexture_ibnub")
 
 [node name="StrikeOutBoxes" parent="." instance=ExtResource("4_vnsdt")]
 
+[node name="Inspector" parent="." instance=ExtResource("20_yu8cv")]
+position = Vector2(-719, 80)
+scale = Vector2(0.7, 0.7)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_6de02")
+}
+
 [connection signal="body_entered" from="ConveyorArea" to="ConveyorArea" method="_on_body_entered"]
 [connection signal="body_entered" from="EdgeArea" to="EdgeArea" method="_on_body_entered"]
 [connection signal="body_exited" from="EdgeArea" to="EdgeArea" method="_on_body_exited"]
@@ -274,3 +364,4 @@ texture_progress = SubResource("AtlasTexture_ibnub")
 [connection signal="body_entered" from="Floor/FloorArea" to="Floor/FloorArea" method="_on_body_entered"]
 
 [editable path="background"]
+[editable path="Inspector"]

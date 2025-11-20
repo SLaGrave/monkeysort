@@ -10,6 +10,7 @@ extends Node2D
 func _ready() -> void:
 	Globals.mistake_made.connect(_on_mistake_made)
 	Globals.score_increased.connect(_on_score_increased)
+	%AnimationPlayer.play("walk")
 
 func _process(delta: float) -> void:
 	Globals.time_elapsed += delta
