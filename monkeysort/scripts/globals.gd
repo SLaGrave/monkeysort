@@ -29,6 +29,7 @@ var _scores: Dictionary = {
 }
 
 func increase_score(bt: Banan.BananaType):
+	_mistakes = 0  # Reset the mistakes
 	_scores[bt] += 1
 	score_increased.emit()
 
