@@ -3,6 +3,8 @@ extends Node
 @export var spawnable_objects: Array[PackedScene]
 @export var spawn_rate: Curve
 
+@onready var main_game: Game = $".."
+
 
 var locations: Array[Vector2]
 var timer := Timer.new()
@@ -16,7 +18,7 @@ func _ready():
 	timer.start()
 
 func _on_timer_timeout() -> void:
-	var instance: Banan = spawnable_objects.pick_random().instantiate()
+	var instance: Banan = spawnable_objects.slice(0, main_game.level+1).pick_random().instantiate()
 	instance.add_to_group("banans")
 	get_parent().add_child(instance)
 	instance.position = locations.pick_random()

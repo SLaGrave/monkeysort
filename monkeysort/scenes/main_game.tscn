@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://bg6va57dqqfms"]
+[gd_scene load_steps=35 format=3 uid="uid://bg6va57dqqfms"]
 
 [ext_resource type="PackedScene" uid="uid://dqob51ts1wg6" path="res://assets/background.kra" id="1_0rdsr"]
 [ext_resource type="Texture2D" uid="uid://di501dbahn6a2" path="res://assets/box.png" id="1_d2op2"]
@@ -40,6 +40,9 @@ size = Vector2(296, 415)
 _limits = [0.42907596, 3.0, 0.0, 90.0]
 _data = [Vector2(0, 0.42907596), 0.0, 0.0, 0, 0, Vector2(1e-05, 0.42907596), 0.0, 0.0, 0, 0, Vector2(16.403227, 1.1410358), 0.0, 0.0, 0, 0, Vector2(21.919355, 0.42907596), 0.0, 0.0, 0, 0, Vector2(33.387096, 1.7311832), 0.0, 0.0, 0, 0, Vector2(50.225803, 1.7213473), 0.0, 0.0, 0, 0, Vector2(53.999996, 0.42907596), 0.0, 0.0, 0, 0, Vector2(59.80645, 0.42907596), 0.0, 0.0, 0, 0, Vector2(60.532253, 2.2328086), 0.0, 0.0, 0, 0, Vector2(77.951614, 1.5541389), 0.0, 0.0, 0, 0]
 point_count = 10
+
+[sub_resource type="LabelSettings" id="LabelSettings_yu8cv"]
+font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ikqpi"]
 atlas = ExtResource("17_5luka")
@@ -251,13 +254,14 @@ position = Vector2(1126, -10)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -960.0
-offset_top = -214.0
-offset_right = -725.0
-offset_bottom = -169.0
+offset_left = 549.0
+offset_top = -486.0
+offset_right = 784.0
+offset_bottom = -441.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "HOJASDLJNASD"
+label_settings = SubResource("LabelSettings_yu8cv")
 script = ExtResource("8_70vka")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
