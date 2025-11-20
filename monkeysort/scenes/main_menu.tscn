@@ -1,0 +1,88 @@
+[gd_scene load_steps=5 format=3 uid="uid://b7tsjpvl6216e"]
+
+[ext_resource type="Script" uid="uid://b7wtvtqrcckwp" path="res://scripts/falling_bananas.gd" id="1_ekxnf"]
+[ext_resource type="Script" uid="uid://dsd1b0x2nfqpt" path="res://scripts/deleter.gd" id="2_ekxnf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bqqt6"]
+size = Vector2(5036, 289)
+
+[sub_resource type="LabelSettings" id="LabelSettings_vue75"]
+font_size = 55
+font_color = Color(0, 0, 0, 1)
+
+[node name="MainMenu" type="Node2D"]
+
+[node name="Falling Bananas" type="Node" parent="."]
+script = ExtResource("1_ekxnf")
+
+[node name="Deleter" type="Area2D" parent="Falling Bananas"]
+script = ExtResource("2_ekxnf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Falling Bananas/Deleter"]
+position = Vector2(2403, 1260.5)
+shape = SubResource("RectangleShape2D_bqqt6")
+
+[node name="SpawnPoints" type="Node" parent="Falling Bananas"]
+
+[node name="Node2D" type="Node2D" parent="Falling Bananas/SpawnPoints"]
+position = Vector2(-1326, -132)
+
+[node name="Node2D2" type="Node2D" parent="Falling Bananas/SpawnPoints"]
+position = Vector2(-839, -222)
+
+[node name="Node2D3" type="Node2D" parent="Falling Bananas/SpawnPoints"]
+position = Vector2(-564, -132)
+
+[node name="Node2D4" type="Node2D" parent="Falling Bananas/SpawnPoints"]
+position = Vector2(-266, -283)
+
+[node name="Node2D5" type="Node2D" parent="Falling Bananas/SpawnPoints"]
+position = Vector2(69, -132)
+
+[node name="Node2D6" type="Node2D" parent="Falling Bananas/SpawnPoints"]
+position = Vector2(313, -343)
+
+[node name="Node2D7" type="Node2D" parent="Falling Bananas/SpawnPoints"]
+position = Vector2(-438, -373)
+
+[node name="Node2D8" type="Node2D" parent="Falling Bananas/SpawnPoints"]
+position = Vector2(-1031, -306)
+
+[node name="Node2D9" type="Node2D" parent="Falling Bananas/SpawnPoints"]
+position = Vector2(416, -100)
+
+[node name="Node2D10" type="Node2D" parent="Falling Bananas/SpawnPoints"]
+position = Vector2(-1155, -100)
+
+[node name="Timer" type="Timer" parent="Falling Bananas"]
+wait_time = 0.25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 747.0
+offset_top = 437.0
+offset_right = 1154.0
+offset_bottom = 698.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "MonkeySort"
+label_settings = SubResource("LabelSettings_vue75")
+horizontal_alignment = 1
+
+[node name="PlayButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Play Game"
+
+[node name="SettingsButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Settings"
+
+[connection signal="body_entered" from="Falling Bananas/Deleter" to="Falling Bananas/Deleter" method="_on_body_entered"]
