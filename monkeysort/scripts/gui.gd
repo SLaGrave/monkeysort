@@ -26,7 +26,7 @@ func add_bad_text(text: String):
 	add_child(label)
 	
 	var tween := get_tree().create_tween().set_loops(3)
-	var duration := 0.25
+	var duration := 0.5
 	tween.tween_property(label, "scale", Vector2(2.0, 2.0), duration)
 	tween.parallel().tween_property(label, "modulate", Color.RED, duration)
 	tween.parallel().tween_method(func(_x): label.pivot_offset = label.size / 2.0, 0, 0, duration)

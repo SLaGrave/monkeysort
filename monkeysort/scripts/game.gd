@@ -6,6 +6,7 @@ class_name Game extends Node2D
 @onready var gui = %GUI
 @onready var progress_bar = %ProgressBar
 @onready var game_over_audio = $"Sound Effects (non-Box & non-Banan))/GameOver"
+@onready var jumpscare_text = $JumpscareText
 
 var sams_flag: bool = false
 
@@ -18,8 +19,8 @@ func _process(delta: float) -> void:
 	Globals.time_elapsed += delta
 	#print(Globals.time_elapsed)
 	progress_bar.value = Globals.time_elapsed
-	if progress_bar.value >= progress_bar.max_value:
-	#if progress_bar.value >= 10:
+	#if progress_bar.value >= progress_bar.max_value:
+	if progress_bar.value >= 5:
 		win_level()
 
 func _input(event):
@@ -59,6 +60,9 @@ func win_level():
 	if sams_flag:
 		return
 	sams_flag = true
+	if level == 2:
+		do_jumpscare()
+		return
 	gui.add_win_text("You won this level!\nOn to the next!")
 	# Delay the restart by 2 seconds
 	var timer := Timer.new()
@@ -71,3 +75,16 @@ func win_level():
 func _win_level_second_half():
 	sams_flag = false
 	set_level(level+1)
+
+func do_jumpscare():
+	$JumpscareText/AudioStreamPlayer2D.play()
+	jumpscare_text.visible = true
+	var timer := Timer.new()
+	timer.one_shot = true
+	timer.wait_time = 5.0
+	timer.timeout.connect(_jumpscare_second_half)
+	add_child(timer)
+	timer.start()
+
+func _jumpscare_second_half():
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
