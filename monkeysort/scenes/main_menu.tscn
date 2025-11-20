@@ -3,13 +3,10 @@
 [ext_resource type="Script" uid="uid://bygqm70p2fngp" path="res://scripts/main_menu.gd" id="1_bqqt6"]
 [ext_resource type="Script" uid="uid://b7wtvtqrcckwp" path="res://scripts/falling_bananas.gd" id="1_ekxnf"]
 [ext_resource type="Script" uid="uid://dsd1b0x2nfqpt" path="res://scripts/deleter.gd" id="2_ekxnf"]
+[ext_resource type="Theme" uid="uid://bhg77s60wjww8" path="res://resources/ms_theme.tres" id="4_wu84c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bqqt6"]
 size = Vector2(5036, 289)
-
-[sub_resource type="LabelSettings" id="LabelSettings_vue75"]
-font_size = 55
-font_color = Color(0, 0, 0, 1)
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_bqqt6")
@@ -75,16 +72,18 @@ theme_override_constants/separation = 30
 
 [node name="TitleLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("4_wu84c")
 text = "MonkeySort"
-label_settings = SubResource("LabelSettings_vue75")
 horizontal_alignment = 1
 
 [node name="PlayButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("4_wu84c")
 text = "Play Game"
 
 [node name="SettingsButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("4_wu84c")
 text = "Settings"
 
 [connection signal="body_entered" from="Falling Bananas/Deleter" to="Falling Bananas/Deleter" method="_on_body_entered"]
