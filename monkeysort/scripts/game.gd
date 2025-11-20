@@ -58,7 +58,7 @@ func win_level():
 	if sams_flag:
 		return
 	sams_flag = true
-	gui.add_bad_text("You won this level!\nOn to the next!")
+	gui.add_win_text("You won this level!\nOn to the next!")
 	# Delay the restart by 2 seconds
 	var timer := Timer.new()
 	timer.one_shot = true
