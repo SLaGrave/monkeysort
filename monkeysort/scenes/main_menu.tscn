@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://b7tsjpvl6216e"]
+[gd_scene load_steps=6 format=3 uid="uid://b7tsjpvl6216e"]
 
+[ext_resource type="Script" uid="uid://bygqm70p2fngp" path="res://scripts/main_menu.gd" id="1_bqqt6"]
 [ext_resource type="Script" uid="uid://b7wtvtqrcckwp" path="res://scripts/falling_bananas.gd" id="1_ekxnf"]
 [ext_resource type="Script" uid="uid://dsd1b0x2nfqpt" path="res://scripts/deleter.gd" id="2_ekxnf"]
 
@@ -11,6 +12,7 @@ font_size = 55
 font_color = Color(0, 0, 0, 1)
 
 [node name="MainMenu" type="Node2D"]
+script = ExtResource("1_bqqt6")
 
 [node name="Falling Bananas" type="Node" parent="."]
 script = ExtResource("1_ekxnf")
@@ -19,7 +21,7 @@ script = ExtResource("1_ekxnf")
 script = ExtResource("2_ekxnf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Falling Bananas/Deleter"]
-position = Vector2(2403, 1260.5)
+position = Vector2(2403, 1261)
 shape = SubResource("RectangleShape2D_bqqt6")
 
 [node name="SpawnPoints" type="Node" parent="Falling Bananas"]
