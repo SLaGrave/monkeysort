@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://bg6va57dqqfms"]
+[gd_scene load_steps=34 format=3 uid="uid://bg6va57dqqfms"]
 
 [ext_resource type="PackedScene" uid="uid://dqob51ts1wg6" path="res://assets/background.kra" id="1_0rdsr"]
 [ext_resource type="Texture2D" uid="uid://di501dbahn6a2" path="res://assets/box.png" id="1_d2op2"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" uid="uid://d3xtdp1s4k86d" path="res://scripts/scores.gd" id="8_70vka"]
 [ext_resource type="Script" uid="uid://sopi4r8c0pme" path="res://scripts/floor_area.gd" id="11_ihbck"]
 [ext_resource type="Script" uid="uid://6dr6fgvh1vs" path="res://scripts/gui.gd" id="12_o6v7o"]
+[ext_resource type="PackedScene" uid="uid://c5e0rqbp36ivb" path="res://scenes/unripe_banana.tscn" id="15_yu8cv"]
 [ext_resource type="Texture2D" uid="uid://cn70xl54l8wlx" path="res://assets/loading_bar/loading_bar_bg.png" id="17_5luka"]
 [ext_resource type="Texture2D" uid="uid://cjm5gt5faxndt" path="res://assets/loading_bar/loading_bar_fg.png" id="18_yu8cv"]
 
@@ -84,7 +85,7 @@ position = Vector2(-960, -540)
 z_index = 11
 
 [node name="RipeBox" type="Area2D" parent="."]
-position = Vector2(299, 383)
+position = Vector2(-437, 372)
 script = ExtResource("3_wi4c7")
 metadata/_edit_group_ = true
 
@@ -110,7 +111,7 @@ stream = ExtResource("6_sp04v")
 bus = &"Sound Effects"
 
 [node name="RottenBox" type="Area2D" parent="."]
-position = Vector2(-329, 372)
+position = Vector2(36, 372)
 script = ExtResource("3_wi4c7")
 accepts = 2
 metadata/_edit_group_ = true
@@ -135,7 +136,7 @@ stream = ExtResource("6_sp04v")
 bus = &"Sound Effects"
 
 [node name="UnripeBox" type="Area2D" parent="."]
-position = Vector2(-678, 376)
+position = Vector2(448, 372)
 script = ExtResource("3_wi4c7")
 accepts = 1
 metadata/_edit_group_ = true
@@ -219,7 +220,7 @@ shape = SubResource("RectangleShape2D_ibnub")
 
 [node name="NannerSpawner" type="Node" parent="."]
 script = ExtResource("6_wi4c7")
-spawnable_objects = Array[PackedScene]([ExtResource("5_ygxny"), ExtResource("3_ipu61")])
+spawnable_objects = Array[PackedScene]([ExtResource("5_ygxny"), ExtResource("3_ipu61"), ExtResource("15_yu8cv")])
 spawn_rate = SubResource("Curve_o6v7o")
 
 [node name="Node2D" type="Node2D" parent="NannerSpawner"]
