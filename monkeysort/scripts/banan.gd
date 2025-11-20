@@ -63,7 +63,9 @@ func change_state(new_state: StateMachine):
 			collision_mask = 1
 			linear_damp = 0.0
 		StateMachine.ON_FLOOR:
-			print("On Floor")
+			var fx = [0.3, 0.4, 0.5, 0.6, 0.7].pick_random() * [1, -1].pick_random() * 5000.0
+			var fy = [0.5, 0.75, 1.0].pick_random() * -1 * 5000.0
+			apply_impulse(Vector2(fx, fy))
 	handle_audio(state, old_state)
 
 func handle_audio(new_state, old_state):

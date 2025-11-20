@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bg6va57dqqfms"]
+[gd_scene load_steps=33 format=3 uid="uid://bg6va57dqqfms"]
 
 [ext_resource type="PackedScene" uid="uid://dqob51ts1wg6" path="res://assets/background.kra" id="1_0rdsr"]
 [ext_resource type="Texture2D" uid="uid://di501dbahn6a2" path="res://assets/box.png" id="1_d2op2"]
@@ -25,6 +25,15 @@ size = Vector2(40, 40)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0rdsr"]
 size = Vector2(2413, 127)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5luka"]
+size = Vector2(1960, 223)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yu8cv"]
+size = Vector2(111, 964)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ibnub"]
+size = Vector2(296, 415)
 
 [sub_resource type="Curve" id="Curve_o6v7o"]
 _limits = [0.42907596, 3.0, 0.0, 90.0]
@@ -176,7 +185,7 @@ position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_p73vr")
 
 [node name="Floor" type="StaticBody2D" parent="."]
-position = Vector2(-12, 474)
+position = Vector2(-12, 494)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
@@ -189,6 +198,24 @@ script = ExtResource("11_ihbck")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Floor/FloorArea"]
 polygon = PackedVector2Array(-1198, -11, -1201, -41, 1225, -39, 1226, -3)
+
+[node name="Walls" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls"]
+position = Vector2(-3, -641.5)
+shape = SubResource("RectangleShape2D_5luka")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls"]
+position = Vector2(-1014.5, -55)
+shape = SubResource("RectangleShape2D_yu8cv")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Walls"]
+position = Vector2(1106, 219.5)
+shape = SubResource("RectangleShape2D_ibnub")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Walls"]
+position = Vector2(1110, -328)
+shape = SubResource("RectangleShape2D_ibnub")
 
 [node name="NannerSpawner" type="Node" parent="."]
 script = ExtResource("6_wi4c7")
