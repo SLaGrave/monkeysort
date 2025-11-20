@@ -19,8 +19,8 @@ func _process(delta: float) -> void:
 	Globals.time_elapsed += delta
 	#print(Globals.time_elapsed)
 	progress_bar.value = Globals.time_elapsed
-	#if progress_bar.value >= progress_bar.max_value:
-	if progress_bar.value >= 5:
+	if progress_bar.value >= progress_bar.max_value:
+	#if progress_bar.value >= 5:
 		win_level()
 
 func _input(event):
