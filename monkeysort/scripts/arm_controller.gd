@@ -2,19 +2,32 @@ extends Node2D
 
 @export var paw_color: Color
 @export var arm_color: Color
-var grabbed_item: Banan
+var items: Array[Banan]
 
 var desired_power := 0.0
 var power := 0.0
 var last_mouse_position := Vector2()
 func _physics_process(_delta) -> void:
 	%HandArea.global_position = get_global_mouse_position()
-	if grabbed_item != null:
-		if Input.is_action_just_released("grab"):
-			grabbed_item.change_state(Banan.StateMachine.FALLING)
-			grabbed_item = null
-			return
-		#grabbed_item.global_position = %HandArea.global_position
+	if Input.is_action_pressed("grab"):
+		for body in %HandArea.get_overlapping_bodies():
+			if not body is Banan:
+				continue
+			
+			if body.state == Banan.StateMachine.GRABBED:
+				continue
+			
+			items.append(body)
+			body.change_state(Banan.StateMachine.GRABBED)
+	elif Input.is_action_just_released("grab"):
+		for item in items:
+			if not is_instance_valid(item):
+				return
+
+			item.change_state(Banan.StateMachine.FALLING)
+		
+		items.clear()
+
 	desired_power = -(get_global_mouse_position() - last_mouse_position)[0] * 4.0
 	power = lerp(power, desired_power, 0.3)
 	queue_redraw()
@@ -35,11 +48,3 @@ func _draw() -> void:
 	draw_polyline(points.slice(0, 91), arm_color, 40, true)
 	draw_circle(points[99], 20.0, paw_color, true)
 	draw_polyline(points.slice(90, 100), paw_color, 40, true)
-
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("grab"):
-		var bodies: Array[Node2D] = %HandArea.get_overlapping_bodies()
-		if not bodies.is_empty():
-			if bodies[0] is Banan:
-				grabbed_item = bodies[0]
-				grabbed_item.change_state(Banan.StateMachine.GRABBED)

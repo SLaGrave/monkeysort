@@ -24,8 +24,8 @@
 [ext_resource type="Texture2D" uid="uid://biydki7s6cuwt" path="res://assets/jumpscare_text.png" id="22_5wboo"]
 [ext_resource type="AudioStream" uid="uid://cv1gg2uy6cxgs" path="res://assets/audio/jumpscare_placeholder.wav" id="23_6de02"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_p73vr"]
-size = Vector2(40, 40)
+[sub_resource type="CircleShape2D" id="CircleShape2D_6de02"]
+radius = 48.166378
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0rdsr"]
 size = Vector2(2413, 127)
@@ -269,7 +269,7 @@ unique_name_in_owner = true
 position = Vector2(1, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ArmPivot/HandArea"]
-shape = SubResource("RectangleShape2D_p73vr")
+shape = SubResource("CircleShape2D_6de02")
 
 [node name="Floor" type="StaticBody2D" parent="."]
 position = Vector2(-12, 494)
