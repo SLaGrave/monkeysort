@@ -294,6 +294,7 @@ script = ExtResource("6_5cypo")
 polygon = PackedVector2Array(-367, -127, -342, -128, -496, 12, -539, 11)
 
 [node name="ArmPivot" type="Node2D" parent="."]
+z_index = 1
 position = Vector2(0, 594)
 script = ExtResource("2_0rdsr")
 paw_color = Color(1, 0.7882353, 0.48235294, 1)
