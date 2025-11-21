@@ -93,6 +93,12 @@ Sam
   General tomfoolery"
 label_settings = SubResource("LabelSettings_qt7qe")
 
+[node name="Label3" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Tools Used:
+Godot ❤️, Krita, Procreate, bfxr"
+label_settings = SubResource("LabelSettings_qt7qe")
+
 [node name="BackButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Return to main menu"
