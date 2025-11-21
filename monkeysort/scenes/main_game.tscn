@@ -1,13 +1,15 @@
-[gd_scene load_steps=41 format=3 uid="uid://bg6va57dqqfms"]
+[gd_scene load_steps=43 format=3 uid="uid://bg6va57dqqfms"]
 
 [ext_resource type="PackedScene" uid="uid://dqob51ts1wg6" path="res://assets/background.kra" id="1_0rdsr"]
 [ext_resource type="Texture2D" uid="uid://di501dbahn6a2" path="res://assets/box.png" id="1_d2op2"]
 [ext_resource type="Script" uid="uid://cmc04lyibx04k" path="res://scripts/game.gd" id="1_o6v7o"]
 [ext_resource type="Script" uid="uid://dhr1xnd3176t0" path="res://scripts/arm_controller.gd" id="2_0rdsr"]
 [ext_resource type="AudioStream" uid="uid://b4vlgo5vf4km2" path="res://assets/audio/placeholder_lose.wav" id="2_sp04v"]
+[ext_resource type="Texture2D" uid="uid://borlc7rkyfte4" path="res://assets/monkey_back.png" id="3_cybgu"]
 [ext_resource type="PackedScene" uid="uid://duo56lu5y52a4" path="res://scenes/rotten_banana.tscn" id="3_ipu61"]
 [ext_resource type="Script" uid="uid://co2arg6dtin3x" path="res://scripts/box.gd" id="3_wi4c7"]
 [ext_resource type="PackedScene" uid="uid://bs5oxui8m7tqe" path="res://scenes/StrikeOutBoxes.tscn" id="4_vnsdt"]
+[ext_resource type="Script" uid="uid://w10dsdbndn04" path="res://scripts/bg_monkeys.gd" id="4_wdxbp"]
 [ext_resource type="AudioStream" uid="uid://i7qkfrqofxb5" path="res://assets/audio/placeholder_correct.wav" id="5_8xp80"]
 [ext_resource type="Script" uid="uid://ccrrnfngnjr8h" path="res://scripts/conveyor_area.gd" id="5_nqdth"]
 [ext_resource type="PackedScene" uid="uid://doy6a4jif0gi0" path="res://scenes/ripe_banana.tscn" id="5_ygxny"]
@@ -160,6 +162,40 @@ script = ExtResource("1_o6v7o")
 [node name="GameOver" type="AudioStreamPlayer2D" parent="Sound Effects (non-Box & non-Banan))"]
 stream = ExtResource("2_sp04v")
 bus = &"Sound Effects"
+
+[node name="BackgroundMonkeys" type="Node" parent="."]
+
+[node name="One" type="Control" parent="BackgroundMonkeys"]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = -375.0
+offset_top = -376.0
+offset_right = 588.0
+offset_bottom = -132.0
+
+[node name="Sprite" type="Sprite2D" parent="BackgroundMonkeys/One"]
+position = Vector2(272, 175)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_cybgu")
+script = ExtResource("4_wdxbp")
+
+[node name="Two" type="Control" parent="BackgroundMonkeys"]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = -189.0
+offset_top = -475.0
+offset_right = 209.0
+offset_bottom = -289.0
+
+[node name="Sprite" type="Sprite2D" parent="BackgroundMonkeys/Two"]
+position = Vector2(291, 162)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_cybgu")
+script = ExtResource("4_wdxbp")
+DEG = 30.0
+LEN = 1.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
