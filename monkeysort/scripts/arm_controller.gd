@@ -22,7 +22,7 @@ func _physics_process(_delta) -> void:
 	elif Input.is_action_just_released("grab"):
 		for item in items:
 			if not is_instance_valid(item):
-				return
+				continue
 
 			item.change_state(Banan.StateMachine.FALLING)
 		
