@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://bg6va57dqqfms"]
+[gd_scene load_steps=44 format=3 uid="uid://bg6va57dqqfms"]
 
 [ext_resource type="PackedScene" uid="uid://dqob51ts1wg6" path="res://assets/background.kra" id="1_0rdsr"]
 [ext_resource type="Texture2D" uid="uid://di501dbahn6a2" path="res://assets/box.png" id="1_d2op2"]
@@ -21,6 +21,7 @@
 [ext_resource type="Script" uid="uid://6dr6fgvh1vs" path="res://scripts/gui.gd" id="12_o6v7o"]
 [ext_resource type="PackedScene" uid="uid://c5e0rqbp36ivb" path="res://scenes/unripe_banana.tscn" id="15_yu8cv"]
 [ext_resource type="Texture2D" uid="uid://cn70xl54l8wlx" path="res://assets/loading_bar/loading_bar_bg.png" id="17_5luka"]
+[ext_resource type="Theme" uid="uid://bhg77s60wjww8" path="res://resources/ms_theme.tres" id="18_on6n6"]
 [ext_resource type="Texture2D" uid="uid://cjm5gt5faxndt" path="res://assets/loading_bar/loading_bar_fg.png" id="18_yu8cv"]
 [ext_resource type="PackedScene" uid="uid://c4ud3qmkqbup4" path="res://scenes/inspector.tscn" id="20_yu8cv"]
 [ext_resource type="Texture2D" uid="uid://biydki7s6cuwt" path="res://assets/jumpscare_text.png" id="22_5wboo"]
@@ -380,6 +381,7 @@ offset_right = 784.0
 offset_bottom = -441.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("18_on6n6")
 text = "HOJASDLJNASD"
 label_settings = SubResource("LabelSettings_yu8cv")
 script = ExtResource("8_70vka")
@@ -432,6 +434,7 @@ libraries = {
 
 [node name="JumpscareText" type="Sprite2D" parent="."]
 visible = false
+z_index = 1
 position = Vector2(-12, 21)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("22_5wboo")
