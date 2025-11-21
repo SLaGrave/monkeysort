@@ -166,9 +166,6 @@ bus = &"Sound Effects"
 [node name="background" parent="." instance=ExtResource("1_0rdsr")]
 position = Vector2(-960, -540)
 
-[node name="Near Wall" parent="background" index="6"]
-z_index = 11
-
 [node name="RipeBox" type="Area2D" parent="."]
 position = Vector2(-437, 372)
 script = ExtResource("3_wi4c7")
