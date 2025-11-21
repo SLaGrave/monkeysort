@@ -1,14 +1,19 @@
 extends Node2D
 
 @onready var play_button = $VBoxContainer/PlayButton
-@onready var settings_button = $VBoxContainer/SettingsButton
+@onready var how_to_play_button = $VBoxContainer/HowToPlayButton
+@onready var credits_button = $VBoxContainer/CreditsButton
 
 func _ready():
 	play_button.pressed.connect(pressed_play)
-	settings_button.pressed.connect(pressed_settings)
+	how_to_play_button.pressed.connect(pressed_how_to_play)
+	credits_button.pressed.connect(pressed_credits)
 
 func pressed_play():
 	get_tree().change_scene_to_file("res://scenes/main_game.tscn")
 
-func pressed_settings():
-	print("Not Implemented Yet")
+func pressed_how_to_play():
+	get_tree().change_scene_to_file("res://scenes/how_to_play_menu.tscn")
+
+func pressed_credits():
+	get_tree().change_scene_to_file("res://scenes/credits_menu.tscn")
