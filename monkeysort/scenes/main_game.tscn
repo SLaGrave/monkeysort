@@ -1,13 +1,15 @@
-[gd_scene load_steps=41 format=3 uid="uid://bg6va57dqqfms"]
+[gd_scene load_steps=34 format=3 uid="uid://bg6va57dqqfms"]
 
 [ext_resource type="PackedScene" uid="uid://dqob51ts1wg6" path="res://assets/background.kra" id="1_0rdsr"]
 [ext_resource type="Texture2D" uid="uid://di501dbahn6a2" path="res://assets/box.png" id="1_d2op2"]
 [ext_resource type="Script" uid="uid://cmc04lyibx04k" path="res://scripts/game.gd" id="1_o6v7o"]
 [ext_resource type="Script" uid="uid://dhr1xnd3176t0" path="res://scripts/arm_controller.gd" id="2_0rdsr"]
 [ext_resource type="AudioStream" uid="uid://b4vlgo5vf4km2" path="res://assets/audio/placeholder_lose.wav" id="2_sp04v"]
+[ext_resource type="Texture2D" uid="uid://borlc7rkyfte4" path="res://assets/monkey_back.png" id="3_cybgu"]
 [ext_resource type="PackedScene" uid="uid://duo56lu5y52a4" path="res://scenes/rotten_banana.tscn" id="3_ipu61"]
 [ext_resource type="Script" uid="uid://co2arg6dtin3x" path="res://scripts/box.gd" id="3_wi4c7"]
 [ext_resource type="PackedScene" uid="uid://bs5oxui8m7tqe" path="res://scenes/StrikeOutBoxes.tscn" id="4_vnsdt"]
+[ext_resource type="Script" uid="uid://w10dsdbndn04" path="res://scripts/bg_monkeys.gd" id="4_wdxbp"]
 [ext_resource type="AudioStream" uid="uid://i7qkfrqofxb5" path="res://assets/audio/placeholder_correct.wav" id="5_8xp80"]
 [ext_resource type="Script" uid="uid://ccrrnfngnjr8h" path="res://scripts/conveyor_area.gd" id="5_nqdth"]
 [ext_resource type="PackedScene" uid="uid://doy6a4jif0gi0" path="res://scenes/ripe_banana.tscn" id="5_ygxny"]
@@ -18,8 +20,7 @@
 [ext_resource type="Script" uid="uid://sopi4r8c0pme" path="res://scripts/floor_area.gd" id="11_ihbck"]
 [ext_resource type="Script" uid="uid://6dr6fgvh1vs" path="res://scripts/gui.gd" id="12_o6v7o"]
 [ext_resource type="PackedScene" uid="uid://c5e0rqbp36ivb" path="res://scenes/unripe_banana.tscn" id="15_yu8cv"]
-[ext_resource type="Texture2D" uid="uid://cn70xl54l8wlx" path="res://assets/loading_bar/loading_bar_bg.png" id="17_5luka"]
-[ext_resource type="Texture2D" uid="uid://cjm5gt5faxndt" path="res://assets/loading_bar/loading_bar_fg.png" id="18_yu8cv"]
+[ext_resource type="Theme" uid="uid://bhg77s60wjww8" path="res://resources/ms_theme.tres" id="18_on6n6"]
 [ext_resource type="PackedScene" uid="uid://c4ud3qmkqbup4" path="res://scenes/inspector.tscn" id="20_yu8cv"]
 [ext_resource type="Texture2D" uid="uid://biydki7s6cuwt" path="res://assets/jumpscare_text.png" id="22_5wboo"]
 [ext_resource type="AudioStream" uid="uid://cv1gg2uy6cxgs" path="res://assets/audio/jumpscare_placeholder.wav" id="23_6de02"]
@@ -43,35 +44,6 @@ size = Vector2(296, 415)
 _limits = [0.42907596, 3.0, 0.0, 90.0]
 _data = [Vector2(0, 0.42907596), 0.0, 0.0, 0, 0, Vector2(1e-05, 0.42907596), 0.0, 0.0, 0, 0, Vector2(16.403227, 1.1410358), 0.0, 0.0, 0, 0, Vector2(21.919355, 0.42907596), 0.0, 0.0, 0, 0, Vector2(33.387096, 1.7311832), 0.0, 0.0, 0, 0, Vector2(50.225803, 1.7213473), 0.0, 0.0, 0, 0, Vector2(53.999996, 0.42907596), 0.0, 0.0, 0, 0, Vector2(59.80645, 0.42907596), 0.0, 0.0, 0, 0, Vector2(60.532253, 2.2328086), 0.0, 0.0, 0, 0, Vector2(77.951614, 1.5541389), 0.0, 0.0, 0, 0]
 point_count = 10
-
-[sub_resource type="LabelSettings" id="LabelSettings_yu8cv"]
-font_color = Color(0, 0, 0, 1)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ikqpi"]
-atlas = ExtResource("17_5luka")
-region = Rect2(1415.0728, 955.84216, 477.0415, 119.2605)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5wboo"]
-texture = SubResource("AtlasTexture_ikqpi")
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5luka"]
-atlas = ExtResource("18_yu8cv")
-region = Rect2(1408.7959, 949.5653, 480.17993, 134.95264)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ibnub"]
-texture = SubResource("AtlasTexture_5luka")
-
-[sub_resource type="Theme" id="Theme_5luka"]
-ProgressBar/styles/background = SubResource("StyleBoxTexture_5wboo")
-ProgressBar/styles/fill = SubResource("StyleBoxTexture_ibnub")
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yu8cv"]
-atlas = ExtResource("17_5luka")
-region = Rect2(1423.0804, 948.54553, 451.81848, 133.63647)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ibnub"]
-atlas = ExtResource("18_yu8cv")
-region = Rect2(1418.8076, 951.3176, 458.677, 128.09924)
 
 [sub_resource type="Animation" id="Animation_5wboo"]
 length = 0.001
@@ -160,6 +132,40 @@ script = ExtResource("1_o6v7o")
 [node name="GameOver" type="AudioStreamPlayer2D" parent="Sound Effects (non-Box & non-Banan))"]
 stream = ExtResource("2_sp04v")
 bus = &"Sound Effects"
+
+[node name="BackgroundMonkeys" type="Node" parent="."]
+
+[node name="One" type="Control" parent="BackgroundMonkeys"]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = -375.0
+offset_top = -376.0
+offset_right = 588.0
+offset_bottom = -132.0
+
+[node name="Sprite" type="Sprite2D" parent="BackgroundMonkeys/One"]
+position = Vector2(272, 175)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_cybgu")
+script = ExtResource("4_wdxbp")
+
+[node name="Two" type="Control" parent="BackgroundMonkeys"]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = -189.0
+offset_top = -475.0
+offset_right = 209.0
+offset_bottom = -289.0
+
+[node name="Sprite" type="Sprite2D" parent="BackgroundMonkeys/Two"]
+position = Vector2(291, 162)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_cybgu")
+script = ExtResource("4_wdxbp")
+DEG = 30.0
+LEN = 1.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -255,6 +261,7 @@ script = ExtResource("6_5cypo")
 polygon = PackedVector2Array(-367, -127, -342, -128, -496, 12, -539, 11)
 
 [node name="ArmPivot" type="Node2D" parent="."]
+z_index = 10
 position = Vector2(0, 594)
 script = ExtResource("2_0rdsr")
 paw_color = Color(1, 0.7882353, 0.48235294, 1)
@@ -263,6 +270,7 @@ metadata/_edit_group_ = true
 
 [node name="HandArea" type="Area2D" parent="ArmPivot"]
 unique_name_in_owner = true
+z_index = 10
 position = Vector2(1, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ArmPivot/HandArea"]
@@ -330,20 +338,6 @@ position = Vector2(1126, -31)
 [node name="Node2D8" type="Node2D" parent="NannerSpawner"]
 position = Vector2(1126, -10)
 
-[node name="Scores" type="Label" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 549.0
-offset_top = -486.0
-offset_right = 784.0
-offset_bottom = -441.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "HOJASDLJNASD"
-label_settings = SubResource("LabelSettings_yu8cv")
-script = ExtResource("8_70vka")
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="GUI" type="Control" parent="CanvasLayer"]
@@ -358,25 +352,42 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("12_o6v7o")
 
-[node name="ProgressBar" type="TextureProgressBar" parent="CanvasLayer/GUI"]
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/GUI"]
 unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = -1
+anchor_left = -0.063541666
+anchor_top = 1.0157408
+anchor_right = 0.9671875
+anchor_bottom = 1.0157408
 offset_left = 1436.0
 offset_top = -1080.0
 offset_right = -1.0
 offset_bottom = -920.0
 grow_horizontal = 2
 grow_vertical = 0
-theme = SubResource("Theme_5luka")
+theme = ExtResource("18_on6n6")
 max_value = 90.0
 step = 0.1
-texture_under = SubResource("AtlasTexture_yu8cv")
-texture_progress = SubResource("AtlasTexture_ibnub")
+show_percentage = false
 metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="CanvasLayer/GUI/ProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -263.0
+offset_top = -53.5
+offset_right = 263.0
+offset_bottom = 53.5
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("8_70vka")
 
 [node name="StrikeOutBoxes" parent="." instance=ExtResource("4_vnsdt")]
 
@@ -392,6 +403,7 @@ libraries = {
 
 [node name="JumpscareText" type="Sprite2D" parent="."]
 visible = false
+z_index = 100
 position = Vector2(-12, 21)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("22_5wboo")

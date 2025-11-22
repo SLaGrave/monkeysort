@@ -1,21 +1,27 @@
-[gd_scene load_steps=6 format=3 uid="uid://b7tsjpvl6216e"]
+[gd_scene load_steps=8 format=3 uid="uid://f62nv1ikgowt"]
 
-[ext_resource type="Script" uid="uid://bygqm70p2fngp" path="res://scripts/main_menu.gd" id="1_bqqt6"]
-[ext_resource type="Script" uid="uid://b7wtvtqrcckwp" path="res://scripts/falling_bananas.gd" id="1_ekxnf"]
-[ext_resource type="Script" uid="uid://dsd1b0x2nfqpt" path="res://scripts/deleter.gd" id="2_ekxnf"]
-[ext_resource type="Theme" uid="uid://bhg77s60wjww8" path="res://resources/ms_theme.tres" id="4_wu84c"]
+[ext_resource type="Script" uid="uid://b61ui8c2f1pdj" path="res://scripts/submenu.gd" id="1_qt7qe"]
+[ext_resource type="Script" uid="uid://b7wtvtqrcckwp" path="res://scripts/falling_bananas.gd" id="2_qt7qe"]
+[ext_resource type="Script" uid="uid://dsd1b0x2nfqpt" path="res://scripts/deleter.gd" id="3_6jc1p"]
+[ext_resource type="Theme" uid="uid://bhg77s60wjww8" path="res://resources/ms_theme.tres" id="4_0864l"]
+[ext_resource type="FontFile" uid="uid://cmvgq7s4fbp3a" path="res://assets/fonts/Lacquer/Lacquer-Regular.ttf" id="4_oh50b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bqqt6"]
 size = Vector2(5036, 289)
 
-[node name="MainMenu" type="Node2D"]
-script = ExtResource("1_bqqt6")
+[sub_resource type="LabelSettings" id="LabelSettings_qt7qe"]
+font = ExtResource("4_oh50b")
+font_size = 24
+font_color = Color(0, 0, 0, 1)
+
+[node name="HowToPlayMenu" type="Node2D"]
+script = ExtResource("1_qt7qe")
 
 [node name="Falling Bananas" type="Node" parent="."]
-script = ExtResource("1_ekxnf")
+script = ExtResource("2_qt7qe")
 
 [node name="Deleter" type="Area2D" parent="Falling Bananas"]
-script = ExtResource("2_ekxnf")
+script = ExtResource("3_6jc1p")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Falling Bananas/Deleter"]
 position = Vector2(2403, 1261)
@@ -68,27 +74,26 @@ offset_right = 1154.0
 offset_bottom = 698.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("4_0864l")
 theme_override_constants/separation = 30
 
-[node name="TitleLabel" type="Label" parent="VBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("4_wu84c")
-text = "MonkeySort"
-horizontal_alignment = 1
-
-[node name="PlayButton" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("4_wu84c")
-text = "Play Game"
-
-[node name="HowToPlayButton" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("4_wu84c")
 text = "How To Play"
 
-[node name="CreditsButton" type="Button" parent="VBoxContainer"]
+[node name="Label2" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("4_wu84c")
-text = "Credits"
+text = "- You are a monkey hired to sort bananas
+  in the banana factory
+- Pick up Bananas with left click (hold)
+- Release left click to drop bananas
+- Place the bananas in the proper box
+- Bananas and their boxes are introduced
+  over three levels"
+label_settings = SubResource("LabelSettings_qt7qe")
+
+[node name="BackButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Return to main menu"
 
 [connection signal="body_entered" from="Falling Bananas/Deleter" to="Falling Bananas/Deleter" method="_on_body_entered"]

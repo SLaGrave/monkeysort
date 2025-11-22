@@ -23,9 +23,9 @@ func _process(delta: float) -> void:
 	#if progress_bar.value >= 5:
 		win_level()
 
-func _input(event):
-	if event.is_action_pressed("close"):
-		get_tree().quit()
+#func _input(event):
+	#if event.is_action_pressed("close"):
+		#get_tree().quit()
 
 func set_level(val: int):
 	level = val

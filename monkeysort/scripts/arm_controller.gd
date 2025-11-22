@@ -45,6 +45,10 @@ func _draw() -> void:
 		var end: Vector2 = if_it_were_straight + power * yoinky.call(i) + sploinky.call(i)
 		points[i] = end
 	
+	# Outline
+	draw_polyline(points.slice(0, 100), Color.BLACK, 50, true)
+	draw_circle(points[99], 25.0, Color.BLACK, true)
+	# Paw/Arm
 	draw_polyline(points.slice(0, 91), arm_color, 40, true)
 	draw_circle(points[99], 20.0, paw_color, true)
 	draw_polyline(points.slice(90, 100), paw_color, 40, true)
