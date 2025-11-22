@@ -3,6 +3,12 @@ class_name Banan extends RigidBody2D
 enum BananaType { RIPE, UNRIPE, ROTTEN }
 enum StateMachine { ON_CONVEYOR, ON_CONVEYOR_EDGE, GRABBED, FALLING, ON_FLOOR }
 
+var BANANA_SCENES = {
+	BananaType.RIPE: preload("res://scenes/ripe_banana.tscn"),
+	BananaType.UNRIPE: preload("res://scenes/unripe_banana.tscn"),
+	BananaType.ROTTEN: preload("res://scenes/rotten_banana.tscn"),
+}
+
 @export var banana_type: BananaType
 
 var state: StateMachine = StateMachine.ON_CONVEYOR
@@ -16,6 +22,7 @@ var direction := Vector2.LEFT
 @onready var audio_hit_ground = $Audio/HitGround
 
 func _ready() -> void:
+	add_child(BANANA_SCENES[banana_type].instantiate())
 	change_state(state)
 
 func _process(_delta: float) -> void:

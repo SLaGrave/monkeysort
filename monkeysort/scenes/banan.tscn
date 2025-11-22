@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://cebshpn7mbia1"]
+
+[ext_resource type="Script" uid="uid://c0mtu65dvq2od" path="res://scripts/banan.gd" id="1_ygfsn"]
+[ext_resource type="AudioStream" uid="uid://qhygveccdfb1" path="res://assets/audio/placeholder_pickup.wav" id="2_tjffo"]
+[ext_resource type="AudioStream" uid="uid://baj7b77ppy2hx" path="res://assets/audio/placeholder_drop.wav" id="3_3po22"]
+[ext_resource type="AudioStream" uid="uid://bkier0hi0t7sy" path="res://assets/audio/placeholder_hitGround.wav" id="4_hcdnt"]
+
+[node name="Banan" type="RigidBody2D"]
+script = ExtResource("1_ygfsn")
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="Grabbed" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("2_tjffo")
+bus = &"Sound Effects"
+
+[node name="Dropped" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("3_3po22")
+bus = &"Sound Effects"
+
+[node name="HitGround" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("4_hcdnt")
+bus = &"Sound Effects"

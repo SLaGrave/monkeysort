@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://bg6va57dqqfms"]
+[gd_scene load_steps=31 format=3 uid="uid://bg6va57dqqfms"]
 
 [ext_resource type="PackedScene" uid="uid://dqob51ts1wg6" path="res://assets/background.kra" id="1_0rdsr"]
 [ext_resource type="Texture2D" uid="uid://di501dbahn6a2" path="res://assets/box.png" id="1_d2op2"]
@@ -6,20 +6,17 @@
 [ext_resource type="Script" uid="uid://dhr1xnd3176t0" path="res://scripts/arm_controller.gd" id="2_0rdsr"]
 [ext_resource type="AudioStream" uid="uid://b4vlgo5vf4km2" path="res://assets/audio/placeholder_lose.wav" id="2_sp04v"]
 [ext_resource type="Texture2D" uid="uid://borlc7rkyfte4" path="res://assets/monkey_back.png" id="3_cybgu"]
-[ext_resource type="PackedScene" uid="uid://duo56lu5y52a4" path="res://scenes/rotten_banana.tscn" id="3_ipu61"]
 [ext_resource type="Script" uid="uid://co2arg6dtin3x" path="res://scripts/box.gd" id="3_wi4c7"]
 [ext_resource type="PackedScene" uid="uid://bs5oxui8m7tqe" path="res://scenes/StrikeOutBoxes.tscn" id="4_vnsdt"]
-[ext_resource type="Script" uid="uid://w10dsdbndn04" path="res://scripts/bg_monkeys.gd" id="4_wdxbp"]
+[ext_resource type="Script" path="res://scripts/bg_monkeys.gd" id="4_wdxbp"]
 [ext_resource type="AudioStream" uid="uid://i7qkfrqofxb5" path="res://assets/audio/placeholder_correct.wav" id="5_8xp80"]
 [ext_resource type="Script" uid="uid://ccrrnfngnjr8h" path="res://scripts/conveyor_area.gd" id="5_nqdth"]
-[ext_resource type="PackedScene" uid="uid://doy6a4jif0gi0" path="res://scenes/ripe_banana.tscn" id="5_ygxny"]
 [ext_resource type="Script" uid="uid://dm6n4npbv1wi8" path="res://scenes/edge_area.gd" id="6_5cypo"]
 [ext_resource type="AudioStream" uid="uid://dy2shyqvr28w5" path="res://assets/audio/placeholder_incorrect.wav" id="6_sp04v"]
 [ext_resource type="Script" uid="uid://cmicso3jmfgdl" path="res://scripts/nanner_spawner.gd" id="6_wi4c7"]
 [ext_resource type="Script" uid="uid://d3xtdp1s4k86d" path="res://scripts/scores.gd" id="8_70vka"]
 [ext_resource type="Script" uid="uid://sopi4r8c0pme" path="res://scripts/floor_area.gd" id="11_ihbck"]
 [ext_resource type="Script" uid="uid://6dr6fgvh1vs" path="res://scripts/gui.gd" id="12_o6v7o"]
-[ext_resource type="PackedScene" uid="uid://c5e0rqbp36ivb" path="res://scenes/unripe_banana.tscn" id="15_yu8cv"]
 [ext_resource type="Theme" uid="uid://bhg77s60wjww8" path="res://resources/ms_theme.tres" id="18_on6n6"]
 [ext_resource type="PackedScene" uid="uid://c4ud3qmkqbup4" path="res://scenes/inspector.tscn" id="20_yu8cv"]
 [ext_resource type="Texture2D" uid="uid://biydki7s6cuwt" path="res://assets/jumpscare_text.png" id="22_5wboo"]
@@ -311,7 +308,6 @@ shape = SubResource("RectangleShape2D_ibnub")
 
 [node name="NannerSpawner" type="Node" parent="."]
 script = ExtResource("6_wi4c7")
-spawnable_objects = Array[PackedScene]([ExtResource("5_ygxny"), ExtResource("3_ipu61"), ExtResource("15_yu8cv")])
 spawn_rate = SubResource("Curve_o6v7o")
 
 [node name="Node2D" type="Node2D" parent="NannerSpawner"]

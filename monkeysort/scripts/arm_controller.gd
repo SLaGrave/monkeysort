@@ -20,18 +20,24 @@ func _physics_process(_delta) -> void:
 			items.append(body)
 			body.change_state(Banan.StateMachine.GRABBED)
 	elif Input.is_action_just_released("grab"):
-		for item in items:
-			if not is_instance_valid(item):
-				continue
-
-			item.change_state(Banan.StateMachine.FALLING)
-		
-		items.clear()
-
+		drop_bananas()
+	
+	
+	
+	
 	desired_power = -(get_global_mouse_position() - last_mouse_position)[0] * 4.0
 	power = lerp(power, desired_power, 0.3)
 	queue_redraw()
 	last_mouse_position = get_global_mouse_position()
+
+func drop_bananas():
+	for item in items:
+		if not is_instance_valid(item):
+			continue
+
+		item.change_state(Banan.StateMachine.FALLING)
+		
+	items.clear()
 
 func _draw() -> void:
 	var midway := Vector2(0, 0).lerp(%HandArea.position, 0.5)

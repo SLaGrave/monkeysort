@@ -1,34 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://duo56lu5y52a4"]
+[gd_scene load_steps=2 format=3 uid="uid://duo56lu5y52a4"]
 
-[ext_resource type="Script" uid="uid://c0mtu65dvq2od" path="res://scripts/banan.gd" id="1_fa26h"]
 [ext_resource type="Texture2D" uid="uid://0vw1u3ug5vq1" path="res://assets/bananas.png" id="1_ibbku"]
-[ext_resource type="AudioStream" uid="uid://qhygveccdfb1" path="res://assets/audio/placeholder_pickup.wav" id="3_bsilf"]
-[ext_resource type="AudioStream" uid="uid://baj7b77ppy2hx" path="res://assets/audio/placeholder_drop.wav" id="4_15y36"]
-[ext_resource type="AudioStream" uid="uid://bkier0hi0t7sy" path="res://assets/audio/placeholder_hitGround.wav" id="5_51u0r"]
 
-[node name="RottenBanana" type="RigidBody2D"]
-script = ExtResource("1_fa26h")
-banana_type = 2
+[node name="RottenBanana" type="CollisionPolygon2D"]
+polygon = PackedVector2Array(-32, 22, -23, 18, -12, 13, 0, 8, 11, -1, 17, -11, 23, -22, 27, -26, 29, -24, 29, -16, 28, -9, 26, -1, 20, 8, 14, 13, 6, 18, -4, 22, -16, 26, -28, 26)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("1_ibbku")
 region_enabled = true
 region_rect = Rect2(1263.8901, 198.92206, 480.17505, 449.84808)
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-32, 22, -23, 18, -12, 13, 0, 8, 11, -1, 17, -11, 23, -22, 27, -26, 29, -24, 29, -16, 28, -9, 26, -1, 20, 8, 14, 13, 6, 18, -4, 22, -16, 26, -28, 26)
-
-[node name="Audio" type="Node" parent="."]
-
-[node name="Grabbed" type="AudioStreamPlayer2D" parent="Audio"]
-stream = ExtResource("3_bsilf")
-bus = &"Sound Effects"
-
-[node name="Dropped" type="AudioStreamPlayer2D" parent="Audio"]
-stream = ExtResource("4_15y36")
-bus = &"Sound Effects"
-
-[node name="HitGround" type="AudioStreamPlayer2D" parent="Audio"]
-stream = ExtResource("5_51u0r")
-bus = &"Sound Effects"

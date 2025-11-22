@@ -1,5 +1,7 @@
 extends Node
 
+var BANAN_SCENE: PackedScene = preload("res://scenes/banan.tscn")
+
 @export var conveyor_speed: float = 500.0
 @export var gravity: float = 100.0
 

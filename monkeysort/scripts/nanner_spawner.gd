@@ -1,6 +1,7 @@
 extends Node
 
-@export var spawnable_objects: Array[PackedScene]
+var banan = preload("res://scenes/banan.tscn")
+
 @export var spawn_rate: Curve
 
 @onready var main_game: Game = $".."
@@ -18,7 +19,8 @@ func _ready():
 	timer.start()
 
 func _on_timer_timeout() -> void:
-	var instance: Banan = spawnable_objects.slice(0, main_game.level+1).pick_random().instantiate()
+	var instance: Banan = banan.instantiate()
+	instance.banana_type = Banan.BananaType.values()[randi_range(0, main_game.level)]
 	instance.add_to_group("banans")
 	instance.z_index = 1
 	get_parent().add_child(instance)
