@@ -1,7 +1,7 @@
 class_name Banan extends RigidBody2D
 
 enum BananaType { RIPE, UNRIPE, ROTTEN }
-enum StateMachine { ON_CONVEYOR, ON_CONVEYOR_EDGE, GRABBED, FALLING, ON_FLOOR }
+enum StateMachine { ON_CONVEYOR, ON_CONVEYOR_EDGE, GRABBED, BOUTA_DROP, FALLING, ON_FLOOR }
 
 var BANANA_SCENES = {
 	BananaType.RIPE: preload("res://scenes/ripe_banana.tscn"),
@@ -12,6 +12,7 @@ var BANANA_SCENES = {
 @export var banana_type: BananaType
 
 var state: StateMachine = StateMachine.ON_CONVEYOR
+var state_locked := false
 
 # Initial (on conveyor) settings
 var speed := Globals.conveyor_speed
@@ -36,6 +37,9 @@ func _physics_process(_delta: float) -> void:
 			linear_velocity = speed * direction
 		StateMachine.GRABBED:
 			apply_central_force(500.0 * (mouse_position - global_position))
+		StateMachine.BOUTA_DROP:
+			apply_central_force(500.0 * (mouse_position - global_position))
+			apply_torque(50.0)
 
 
 var mouse_direction: Vector2 = Vector2()
@@ -43,6 +47,9 @@ var old_mouse_position: Vector2 = Vector2()
 var mouse_position: Vector2 = Vector2()
 
 func change_state(new_state: StateMachine):
+	if state_locked:
+		return
+	
 	# The origin state matters for a few transitions
 	var old_state = state
 	state = new_state
@@ -64,7 +71,14 @@ func change_state(new_state: StateMachine):
 			collision_mask = 0
 			linear_velocity = Vector2(0.0, 0.0)
 			linear_damp = 30.0
+		StateMachine.BOUTA_DROP:
+			var tween := get_tree().create_tween().set_loops(3)
+			tween.tween_property(self, "modulate", Color.RED, 0.5)
+			tween.tween_property(self, "modulate", Color.WHITE, 0.5)
+			tween.tween_callback(func(): if tween.get_loops_left() == 1: change_state(StateMachine.FALLING))
 		StateMachine.FALLING:
+			state_locked = true
+			get_tree().create_timer(1).timeout.connect(func(): state_locked = false)
 			gravity_scale = 1.0
 			collision_layer = 1
 			collision_mask = 1

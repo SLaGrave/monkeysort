@@ -4,12 +4,27 @@ extends Node2D
 @export var arm_color: Color
 var items: Array[Banan]
 
+var drop_timer: Timer
 var desired_power := 0.0
 var power := 0.0
 var last_mouse_position := Vector2()
+
+func _ready() -> void:
+	drop_timer = Timer.new()
+	drop_timer.timeout.connect(_on_drop_timer_timeout)
+	add_child(drop_timer)
+
 func _physics_process(_delta) -> void:
 	%HandArea.global_position = get_global_mouse_position()
+	if Input.is_action_just_pressed("grab"):
+		drop_timer.start(1)
 	if Input.is_action_pressed("grab"):
+		var items_to_remove = []
+		for item in items:
+			if item.state != Banan.StateMachine.GRABBED and item.state != Banan.StateMachine.BOUTA_DROP:
+				items_to_remove.append(item)
+				continue
+		
 		for body in %HandArea.get_overlapping_bodies():
 			if not body is Banan:
 				continue
@@ -19,9 +34,12 @@ func _physics_process(_delta) -> void:
 			
 			items.append(body)
 			body.change_state(Banan.StateMachine.GRABBED)
+		
+		for item in items_to_remove:
+			items.erase(item)
 	elif Input.is_action_just_released("grab"):
 		drop_bananas()
-	
+		drop_timer.stop()
 	
 	
 	
@@ -38,6 +56,11 @@ func drop_bananas():
 		item.change_state(Banan.StateMachine.FALLING)
 		
 	items.clear()
+
+func _on_drop_timer_timeout():
+	if not items.is_empty():
+		if items[0].state != Banan.StateMachine.BOUTA_DROP:
+			items[0].change_state(Banan.StateMachine.BOUTA_DROP)
 
 func _draw() -> void:
 	var midway := Vector2(0, 0).lerp(%HandArea.position, 0.5)
