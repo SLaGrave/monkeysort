@@ -17,11 +17,11 @@ func _ready() -> void:
 func _physics_process(_delta) -> void:
 	%HandArea.global_position = get_global_mouse_position()
 	if Input.is_action_just_pressed("grab"):
-		drop_timer.start(1)
+		drop_timer.start()
 	if Input.is_action_pressed("grab"):
 		var items_to_remove = []
 		for item in items:
-			if item.state != Banan.StateMachine.GRABBED and item.state != Banan.StateMachine.BOUTA_DROP:
+			if not is_instance_valid(item) or item.state != Banan.StateMachine.GRABBED and item.state != Banan.StateMachine.BOUTA_DROP:
 				items_to_remove.append(item)
 				continue
 		
@@ -37,6 +37,8 @@ func _physics_process(_delta) -> void:
 		
 		for item in items_to_remove:
 			items.erase(item)
+		
+		drop_timer.wait_time = 2.0 / len(items)
 	elif Input.is_action_just_released("grab"):
 		drop_bananas()
 		drop_timer.stop()
